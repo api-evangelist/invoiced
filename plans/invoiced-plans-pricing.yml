@@ -1,0 +1,88 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Invoiced
+providerId: invoiced
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Accounts Receivable
+- Billing
+- Invoicing
+- Payments
+- Subscriptions
+- Plans
+description: >-
+  Invoiced is sold as a sales-led SaaS platform rather than self-serve API
+  pricing. Public list pricing has historically referenced a Basic tier around
+  $100/month and an Advanced tier around $500/month, but since the Flywire
+  acquisition in 2024 Invoiced has moved toward custom quotes aimed at
+  mid-market and enterprise buyers. The accounts-receivable product is offered
+  as Advanced A/R and Enterprise A/R packages priced by quote. The REST API is
+  included with a subscription; it is not metered or priced separately. Values
+  here are not reconciled - contact Invoiced sales for current pricing.
+notes: >-
+  Pricing is sales-led and changes frequently; figures below are
+  illustrative from third-party sources and must be confirmed with Invoiced
+  sales during reconciliation.
+sources:
+- https://www.invoiced.com/accounts-receivable/pricing
+- https://www.invoiced.com
+- https://developer.invoiced.com/api
+plans:
+- id: invoiced-advanced-ar
+  name: Advanced A/R
+  type: subscription
+  description: >-
+    Accounts-receivable automation for growing mid-sized companies, including
+    invoicing, online payments, collections automation, customer portal, and
+    full REST API access. Often offered on a pay-as-you-go basis with a per-
+    invoice fee. Priced by quote.
+  entries:
+  - label: Advanced A/R Subscription
+    name: advanced_ar
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales (historically referenced near $500/month)
+    userMultiplied: false
+  elements:
+  - name: Invoicing
+  - name: Online Payments
+  - name: Collections Automation
+  - name: Customer Portal
+  - name: Subscriptions & Recurring Billing
+  - name: REST API & Webhooks
+- id: invoiced-enterprise-ar
+  name: Enterprise A/R
+  type: enterprise
+  description: >-
+    For businesses with complex receivables. Includes everything in Advanced
+    A/R plus powerful automation, cash application, custom reports and
+    dashboards, cash flow forecasting, ERP integrations, and implementation
+    support. Priced by quote.
+  entries:
+  - label: Enterprise A/R Agreement
+    name: enterprise_ar
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Cash Application
+  - name: Custom Reports & Dashboards
+  - name: Cash Flow Forecasting
+  - name: Advanced Automation
+  - name: ERP Integrations
+  - name: Implementation Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

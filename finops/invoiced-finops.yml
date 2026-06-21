@@ -1,0 +1,88 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Invoiced
+providerId: invoiced
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Accounts Receivable
+- Billing
+- Payments
+- Subscriptions
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Invoiced spend. Invoiced is a sales-led SaaS subscription
+  (Advanced A/R and Enterprise A/R packages) rather than a usage-metered API,
+  so cost is driven primarily by the negotiated subscription, optional per-
+  invoice fees on pay-as-you-go plans, and downstream payment-processing fees
+  on collected transactions. The REST API is included with the subscription and
+  is not billed separately. Exact rates are sales-led and not reconciled here.
+notes: >-
+  Confirm subscription tier, per-invoice fees, and payment-processing rates
+  with Invoiced sales during reconciliation; pricing is quote-based.
+sources:
+- https://www.invoiced.com/accounts-receivable/pricing
+- https://developer.invoiced.com/api
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Invoiced
+serviceCategory: Financial Operations
+billingModel:
+  pricingCategory: Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Invoiced
+  ServiceCategory: Financial Operations
+  ProviderName: Invoiced
+  PublisherName: Invoiced
+  InvoiceIssuerName: Invoiced
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription
+meters:
+- name: subscription_fee
+  description: Recurring platform subscription fee for the Advanced A/R or Enterprise A/R package.
+  unit: subscription
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: per_invoice_fee
+  description: Optional per-invoice fee charged on pay-as-you-go A/R plans.
+  unit: invoices
+  aggregation: sum
+  dimensions:
+  - account
+- name: payment_processing_fees
+  description: Downstream processing fees on payments collected through the platform.
+  unit: transactions
+  aggregation: sum
+  dimensions:
+  - account
+  - method
+principles:
+- name: Visibility
+  description: Track subscription tier, per-invoice fees, and payment-processing costs against A/R volume.
+- name: Allocation
+  description: Tag API keys and customers/metadata per business unit to map platform cost to revenue cohorts.
+- name: Optimization
+  description: Choose the subscription tier matched to invoice volume; route collections to lower-fee payment methods (ACH vs. card) where feasible.
+- name: Accountability
+  description: Assign an owner for the Invoiced contract; review subscription and processing spend against collected receivables.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

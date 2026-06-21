@@ -1,0 +1,86 @@
+aid: invoiced
+name: Invoiced
+review:
+  question: Does Invoiced expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Invoiced delivers asynchronous notifications via HTTP webhooks (event
+    callbacks), not over a streaming transport. There is no Server-Sent
+    Events (SSE) or WebSocket surface to model, so no AsyncAPI document was
+    authored. The webhook/event surface is captured through the Events
+    resource in the OpenAPI document.
+findings:
+  summary: |
+    Invoiced exposes a synchronous REST API only, served over HTTPS at
+    https://api.invoiced.com (sandbox at https://api.sandbox.invoiced.com),
+    authenticated with HTTP Basic auth using an API key as the username and a
+    blank password. Asynchronous delivery is handled by HTTP webhooks: the
+    platform produces events (object.action records such as invoice.paid and
+    customer.created) that are POSTed as HTTP callbacks to a configured
+    endpoint. No realtime, bidirectional, or streaming WebSocket (ws:// or
+    wss://) endpoint and no SSE stream are documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.invoiced.com
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound HTTP callbacks triggered by account events; one-way server-to-client POSTs. Not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in the Invoiced API reference or developer docs as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.invoiced.com/customers
+    - POST   https://api.invoiced.com/customers
+    - GET    https://api.invoiced.com/customers/{id}
+    - PATCH  https://api.invoiced.com/customers/{id}
+    - DELETE https://api.invoiced.com/customers/{id}
+    - GET    https://api.invoiced.com/customers/{id}/balance
+    - GET    https://api.invoiced.com/invoices
+    - POST   https://api.invoiced.com/invoices
+    - GET    https://api.invoiced.com/invoices/{id}
+    - PATCH  https://api.invoiced.com/invoices/{id}
+    - DELETE https://api.invoiced.com/invoices/{id}
+    - POST   https://api.invoiced.com/invoices/{id}/emails
+    - POST   https://api.invoiced.com/invoices/{id}/pay
+    - POST   https://api.invoiced.com/invoices/{id}/void
+    - GET    https://api.invoiced.com/estimates
+    - POST   https://api.invoiced.com/estimates
+    - POST   https://api.invoiced.com/estimates/{id}/invoice
+    - GET    https://api.invoiced.com/credit_notes
+    - POST   https://api.invoiced.com/credit_notes
+    - GET    https://api.invoiced.com/payments
+    - POST   https://api.invoiced.com/payments
+    - GET    https://api.invoiced.com/subscriptions
+    - POST   https://api.invoiced.com/subscriptions
+    - POST   https://api.invoiced.com/subscriptions/preview
+    - GET    https://api.invoiced.com/plans
+    - GET    https://api.invoiced.com/items
+    - GET    https://api.invoiced.com/events
+    - GET    https://api.invoiced.com/events/{id}
+sources:
+  - url: https://developer.invoiced.com/api
+    type: APIReference
+    note: Overview lists REST base URL https://api.invoiced.com and HTTP Basic auth; no WebSocket mentioned.
+  - url: https://developer.invoiced.com/api/events
+    type: Documentation
+    note: Events drive HTTP webhook callbacks; webhooks are one-way HTTP POSTs, not WebSocket.
+  - url: https://docs.invoiced.com/dev
+    type: Documentation
+    note: Developer guide; describes REST integration patterns and webhooks only.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists. Asynchronous behavior is
+    limited to outbound HTTP webhooks fired from the Events resource, which
+    is modeled in the OpenAPI document. No AsyncAPI artifact was created.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

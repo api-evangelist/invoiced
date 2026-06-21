@@ -1,0 +1,441 @@
+{
+  "info": {
+    "_postman_id": "b1f3c0d2-7a4e-4e8b-9c2a-1f0e3d5a6c70",
+    "name": "Invoiced API",
+    "description": "REST API for the Invoiced accounts-receivable and billing automation platform. Authenticate with HTTP Basic auth using your API key as the username and a blank password.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{apiKey}}", "type": "string" },
+      { "key": "password", "value": "", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.invoiced.com", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "List all customers.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/customers", "host": [ "{{baseUrl}}" ], "path": [ "customers" ] }
+          }
+        },
+        {
+          "name": "Create a new customer.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"Acme Inc\",\n  \"email\": \"billing@acme.com\",\n  \"type\": \"company\",\n  \"payment_terms\": \"NET 30\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/customers", "host": [ "{{baseUrl}}" ], "path": [ "customers" ] }
+          }
+        },
+        {
+          "name": "Retrieve a customer.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/customers/:id", "host": [ "{{baseUrl}}" ], "path": [ "customers", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update a customer.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"payment_terms\": \"NET 15\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/customers/:id", "host": [ "{{baseUrl}}" ], "path": [ "customers", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Delete a customer.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/customers/:id", "host": [ "{{baseUrl}}" ], "path": [ "customers", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Retrieve a customer's balance.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/customers/:id/balance", "host": [ "{{baseUrl}}" ], "path": [ "customers", ":id", "balance" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "List all invoices.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/invoices", "host": [ "{{baseUrl}}" ], "path": [ "invoices" ] }
+          }
+        },
+        {
+          "name": "Create a new invoice.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"customer\": 15444,\n  \"payment_terms\": \"NET 30\",\n  \"items\": [\n    { \"name\": \"Consulting\", \"quantity\": 1, \"unit_cost\": 500 }\n  ]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/invoices", "host": [ "{{baseUrl}}" ], "path": [ "invoices" ] }
+          }
+        },
+        {
+          "name": "Retrieve an invoice.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/invoices/:id", "host": [ "{{baseUrl}}" ], "path": [ "invoices", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update an invoice.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"notes\": \"Updated terms\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/invoices/:id", "host": [ "{{baseUrl}}" ], "path": [ "invoices", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Delete an invoice.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/invoices/:id", "host": [ "{{baseUrl}}" ], "path": [ "invoices", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Send an invoice by email.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/invoices/:id/emails", "host": [ "{{baseUrl}}" ], "path": [ "invoices", ":id", "emails" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Pay an invoice.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/invoices/:id/pay", "host": [ "{{baseUrl}}" ], "path": [ "invoices", ":id", "pay" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Void an invoice.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/invoices/:id/void", "host": [ "{{baseUrl}}" ], "path": [ "invoices", ":id", "void" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Estimates",
+      "item": [
+        {
+          "name": "List all estimates.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/estimates", "host": [ "{{baseUrl}}" ], "path": [ "estimates" ] }
+          }
+        },
+        {
+          "name": "Create a new estimate.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"customer\": 15444,\n  \"items\": [\n    { \"name\": \"Setup\", \"quantity\": 1, \"unit_cost\": 1000 }\n  ]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/estimates", "host": [ "{{baseUrl}}" ], "path": [ "estimates" ] }
+          }
+        },
+        {
+          "name": "Retrieve an estimate.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/estimates/:id", "host": [ "{{baseUrl}}" ], "path": [ "estimates", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update an estimate.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"notes\": \"Revised quote\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/estimates/:id", "host": [ "{{baseUrl}}" ], "path": [ "estimates", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Delete an estimate.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/estimates/:id", "host": [ "{{baseUrl}}" ], "path": [ "estimates", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Convert an estimate to an invoice.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/estimates/:id/invoice", "host": [ "{{baseUrl}}" ], "path": [ "estimates", ":id", "invoice" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Credit Notes",
+      "item": [
+        {
+          "name": "List all credit notes.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/credit_notes", "host": [ "{{baseUrl}}" ], "path": [ "credit_notes" ] }
+          }
+        },
+        {
+          "name": "Create a new credit note.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"customer\": 15444,\n  \"invoice\": 46225,\n  \"items\": [\n    { \"name\": \"Refund\", \"quantity\": 1, \"unit_cost\": 100 }\n  ]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/credit_notes", "host": [ "{{baseUrl}}" ], "path": [ "credit_notes" ] }
+          }
+        },
+        {
+          "name": "Retrieve a credit note.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/credit_notes/:id", "host": [ "{{baseUrl}}" ], "path": [ "credit_notes", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update a credit note.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"notes\": \"Adjusted\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/credit_notes/:id", "host": [ "{{baseUrl}}" ], "path": [ "credit_notes", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Delete a credit note.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/credit_notes/:id", "host": [ "{{baseUrl}}" ], "path": [ "credit_notes", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Payments",
+      "item": [
+        {
+          "name": "List all payments.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/payments", "host": [ "{{baseUrl}}" ], "path": [ "payments" ] }
+          }
+        },
+        {
+          "name": "Record a new payment.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"customer\": 15444,\n  \"method\": \"ach\",\n  \"amount\": 500,\n  \"applied_to\": [\n    { \"type\": \"invoice\", \"invoice\": 46225, \"amount\": 500 }\n  ]\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/payments", "host": [ "{{baseUrl}}" ], "path": [ "payments" ] }
+          }
+        },
+        {
+          "name": "Retrieve a payment.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/payments/:id", "host": [ "{{baseUrl}}" ], "path": [ "payments", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update a payment.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"notes\": \"Reconciled\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/payments/:id", "host": [ "{{baseUrl}}" ], "path": [ "payments", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Delete a payment.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/payments/:id", "host": [ "{{baseUrl}}" ], "path": [ "payments", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscriptions & Plans",
+      "item": [
+        {
+          "name": "List all subscriptions.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/subscriptions", "host": [ "{{baseUrl}}" ], "path": [ "subscriptions" ] }
+          }
+        },
+        {
+          "name": "Create a new subscription.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"customer\": 15444,\n  \"plan\": \"starter\",\n  \"quantity\": 1\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/subscriptions", "host": [ "{{baseUrl}}" ], "path": [ "subscriptions" ] }
+          }
+        },
+        {
+          "name": "Preview a subscription.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"customer\": 15444,\n  \"plan\": \"starter\",\n  \"quantity\": 1\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/subscriptions/preview", "host": [ "{{baseUrl}}" ], "path": [ "subscriptions", "preview" ] }
+          }
+        },
+        {
+          "name": "Retrieve a subscription.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/subscriptions/:id", "host": [ "{{baseUrl}}" ], "path": [ "subscriptions", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update a subscription.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"quantity\": 2\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/subscriptions/:id", "host": [ "{{baseUrl}}" ], "path": [ "subscriptions", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Cancel a subscription.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/subscriptions/:id", "host": [ "{{baseUrl}}" ], "path": [ "subscriptions", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "List all plans.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/plans", "host": [ "{{baseUrl}}" ], "path": [ "plans" ] }
+          }
+        },
+        {
+          "name": "Create a new plan.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"starter\",\n  \"name\": \"Starter\",\n  \"amount\": 49,\n  \"interval\": \"month\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/plans", "host": [ "{{baseUrl}}" ], "path": [ "plans" ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Items",
+      "item": [
+        {
+          "name": "List all items.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/items", "host": [ "{{baseUrl}}" ], "path": [ "items" ] }
+          }
+        },
+        {
+          "name": "Create a new item.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"consulting\",\n  \"name\": \"Consulting\",\n  \"unit_cost\": 150,\n  \"type\": \"service\"\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/items", "host": [ "{{baseUrl}}" ], "path": [ "items" ] }
+          }
+        },
+        {
+          "name": "Retrieve an item.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/items/:id", "host": [ "{{baseUrl}}" ], "path": [ "items", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Update an item.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "body": { "mode": "raw", "raw": "{\n  \"unit_cost\": 175\n}", "options": { "raw": { "language": "json" } } },
+            "url": { "raw": "{{baseUrl}}/items/:id", "host": [ "{{baseUrl}}" ], "path": [ "items", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        },
+        {
+          "name": "Delete an item.",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": { "raw": "{{baseUrl}}/items/:id", "host": [ "{{baseUrl}}" ], "path": [ "items", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Events",
+      "item": [
+        {
+          "name": "List account events.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/events", "host": [ "{{baseUrl}}" ], "path": [ "events" ] }
+          }
+        },
+        {
+          "name": "Retrieve an event.",
+          "request": {
+            "method": "GET",
+            "header": [ { "key": "Accept", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/events/:id", "host": [ "{{baseUrl}}" ], "path": [ "events", ":id" ], "variable": [ { "key": "id", "value": "" } ] }
+          }
+        }
+      ]
+    }
+  ]
+}

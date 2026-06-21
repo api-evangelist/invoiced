@@ -1,0 +1,54 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Invoiced
+providerId: invoiced
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Accounts Receivable
+- Billing
+- Payments
+- Subscriptions
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Invoiced REST API applies per-account rate limiting to protect platform
+  stability. Specific request-per-second / per-minute thresholds are not
+  published in the public API reference and vary by account. Clients should
+  watch for HTTP 429 responses and back off accordingly. List endpoints are
+  paginated via page and per_page (max 100 per page), which serves as a
+  practical throughput control. Specific numeric limits are not reconciled in
+  this artifact.
+notes: >-
+  Verify current rate-limit thresholds, any documented headers, and 429
+  retry guidance with Invoiced support during reconciliation; values are not
+  published in the public reference.
+sources:
+- https://developer.invoiced.com/api
+- https://docs.invoiced.com/dev
+responseCodes:
+  throttled: 429
+limits:
+- name: Per-Account Request Rate
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Per-API-key request throttling; specific thresholds are not published.
+- name: List Pagination
+  scope: request
+  metric: records
+  limit: 100
+  notes: Maximum records per page on list endpoints via per_page; default 25.
+policies:
+- name: Backoff Strategy
+  description: On HTTP 429, clients should retry with exponential backoff and jitter.
+- name: Pagination
+  description: Use page and per_page to traverse large result sets rather than large single requests.
+- name: Sandbox Testing
+  description: Use https://api.sandbox.invoiced.com to test integrations without affecting production limits or data.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

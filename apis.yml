@@ -1,0 +1,216 @@
+aid: invoiced
+url: https://raw.githubusercontent.com/api-evangelist/invoiced/refs/heads/main/apis.yml
+name: Invoiced
+kind: company
+description: Invoiced is an accounts-receivable and billing automation platform that
+  helps B2B finance teams get paid faster. Its REST API exposes customers, invoices,
+  estimates, credit notes, payments, subscriptions, plans, items, events, and webhooks
+  for automating A/R, payment collection, and subscription billing. Invoiced was
+  acquired by Flywire in 2024.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Accounts Receivable
+- Billing
+- Invoicing
+- Payments
+- Subscriptions
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: invoiced:customers
+  name: Invoiced Customers API
+  tags:
+  - Customers
+  - Accounts Receivable
+  - Contacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/customers
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/customers
+    type: Documentation
+  - url: https://developer.invoiced.com/api/customers
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Create, retrieve, update, list, and delete customers; pull customer
+    credit balances and statements; and send statements via email, SMS, or mail.
+- aid: invoiced:invoices
+  name: Invoiced Invoices API
+  tags:
+  - Invoices
+  - Billing
+  - Accounts Receivable
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/invoices
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/invoices
+    type: Documentation
+  - url: https://developer.invoiced.com/api/invoices
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Manage invoices end-to-end - create, update, void, and delete invoices;
+    send by email, text message, or mail; trigger payment collection; and list
+    invoice attachments.
+- aid: invoiced:estimates
+  name: Invoiced Estimates API
+  tags:
+  - Estimates
+  - Quotes
+  - Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/estimates
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/estimates
+    type: Documentation
+  - url: https://developer.invoiced.com/api/estimates
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Create and manage estimates (quotes), send them to customers, convert
+    approved estimates into invoices, and void or delete estimates.
+- aid: invoiced:credit-notes
+  name: Invoiced Credit Notes API
+  tags:
+  - Credit Notes
+  - Refunds
+  - Accounts Receivable
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/credit-notes
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/credit-notes
+    type: Documentation
+  - url: https://developer.invoiced.com/api/credit-notes
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Issue credit notes that represent balances owed back to customers,
+    send them, void them, and manage their line items and attachments.
+- aid: invoiced:payments
+  name: Invoiced Payments API
+  tags:
+  - Payments
+  - Transactions
+  - Cash Application
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/payments
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/payments
+    type: Documentation
+  - url: https://developer.invoiced.com/api/payments
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Record and manage payments and their applications across invoices,
+    supporting multiple applications per payment for cash application workflows.
+- aid: invoiced:subscriptions
+  name: Invoiced Subscriptions & Plans API
+  tags:
+  - Subscriptions
+  - Plans
+  - Recurring Billing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/subscriptions
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/subscriptions
+    type: Documentation
+  - url: https://developer.invoiced.com/api/subscriptions
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Create, preview, update, list, and cancel subscriptions backed by
+    reusable plans, with MRR, billing-cycle, add-on, and metered-billing support.
+- aid: invoiced:items
+  name: Invoiced Items API
+  tags:
+  - Items
+  - Catalog
+  - Line Items
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/items
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/items
+    type: Documentation
+  - url: https://developer.invoiced.com/api/items
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Maintain a catalog of reusable items (products and services) used as
+    line items on invoices, estimates, and credit notes.
+- aid: invoiced:webhooks
+  name: Invoiced Events & Webhooks API
+  tags:
+  - Events
+  - Webhooks
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://developer.invoiced.com/api/events
+  baseURL: https://api.invoiced.com
+  properties:
+  - url: https://developer.invoiced.com/api/events
+    type: Documentation
+  - url: https://developer.invoiced.com/api/events
+    type: APIReference
+  - url: openapi/invoiced-openapi.yml
+    type: OpenAPI
+  - url: collections/invoiced.postman_collection.json
+    type: PostmanCollection
+  - url: collections/invoiced.opencollection.json
+    type: OpenCollection
+  description: Retrieve and list account events (object.action records such as
+    invoice.paid and customer.created) that drive HTTP webhook callbacks to your
+    systems.
+common:
+- type: GitHubOrganization
+  url: https://github.com/Invoiced
+- type: LinkedIn
+  url: https://www.linkedin.com/company/invoiced
+- type: Website
+  url: https://www.invoiced.com
+- type: Documentation
+  url: https://developer.invoiced.com/api
+- type: Plans
+  url: plans/invoiced-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/invoiced-rate-limits.yml
+- type: FinOps
+  url: finops/invoiced-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

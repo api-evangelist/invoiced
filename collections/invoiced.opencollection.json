@@ -1,0 +1,305 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoiced API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{apiKey}}",
+      "password": ""
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all customers.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/customers" },
+          "docs": "List all customers."
+        },
+        {
+          "info": { "name": "Create a new customer.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/customers", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new customer."
+        },
+        {
+          "info": { "name": "Retrieve a customer.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/customers/:id" },
+          "docs": "Retrieve a customer."
+        },
+        {
+          "info": { "name": "Update a customer.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/customers/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update a customer."
+        },
+        {
+          "info": { "name": "Delete a customer.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/customers/:id" },
+          "docs": "Delete a customer."
+        },
+        {
+          "info": { "name": "Retrieve a customer's balance.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/customers/:id/balance" },
+          "docs": "Retrieve a customer's credit balance and amount outstanding."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all invoices.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/invoices" },
+          "docs": "List all invoices."
+        },
+        {
+          "info": { "name": "Create a new invoice.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/invoices", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new invoice."
+        },
+        {
+          "info": { "name": "Retrieve an invoice.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/invoices/:id" },
+          "docs": "Retrieve an invoice."
+        },
+        {
+          "info": { "name": "Update an invoice.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/invoices/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update an invoice."
+        },
+        {
+          "info": { "name": "Delete an invoice.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/invoices/:id" },
+          "docs": "Delete an invoice."
+        },
+        {
+          "info": { "name": "Send an invoice by email.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/invoices/:id/emails", "body": { "type": "json", "data": "{}" } },
+          "docs": "Send an invoice to the customer by email."
+        },
+        {
+          "info": { "name": "Pay an invoice.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/invoices/:id/pay", "body": { "type": "json", "data": "{}" } },
+          "docs": "Trigger automatic payment collection on an invoice."
+        },
+        {
+          "info": { "name": "Void an invoice.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/invoices/:id/void", "body": { "type": "json", "data": "{}" } },
+          "docs": "Void an invoice."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Estimates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all estimates.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/estimates" },
+          "docs": "List all estimates."
+        },
+        {
+          "info": { "name": "Create a new estimate.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/estimates", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new estimate."
+        },
+        {
+          "info": { "name": "Retrieve an estimate.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/estimates/:id" },
+          "docs": "Retrieve an estimate."
+        },
+        {
+          "info": { "name": "Update an estimate.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/estimates/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update an estimate."
+        },
+        {
+          "info": { "name": "Delete an estimate.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/estimates/:id" },
+          "docs": "Delete an estimate."
+        },
+        {
+          "info": { "name": "Convert an estimate to an invoice.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/estimates/:id/invoice", "body": { "type": "json", "data": "{}" } },
+          "docs": "Convert an approved estimate into an invoice."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credit Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all credit notes.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/credit_notes" },
+          "docs": "List all credit notes."
+        },
+        {
+          "info": { "name": "Create a new credit note.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/credit_notes", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new credit note."
+        },
+        {
+          "info": { "name": "Retrieve a credit note.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/credit_notes/:id" },
+          "docs": "Retrieve a credit note."
+        },
+        {
+          "info": { "name": "Update a credit note.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/credit_notes/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update a credit note."
+        },
+        {
+          "info": { "name": "Delete a credit note.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/credit_notes/:id" },
+          "docs": "Delete a credit note."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all payments.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/payments" },
+          "docs": "List all payments."
+        },
+        {
+          "info": { "name": "Record a new payment.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/payments", "body": { "type": "json", "data": "{}" } },
+          "docs": "Record a new payment."
+        },
+        {
+          "info": { "name": "Retrieve a payment.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/payments/:id" },
+          "docs": "Retrieve a payment."
+        },
+        {
+          "info": { "name": "Update a payment.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/payments/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update a payment."
+        },
+        {
+          "info": { "name": "Delete a payment.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/payments/:id" },
+          "docs": "Delete a payment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions & Plans",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all subscriptions.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/subscriptions" },
+          "docs": "List all subscriptions."
+        },
+        {
+          "info": { "name": "Create a new subscription.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/subscriptions", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new subscription."
+        },
+        {
+          "info": { "name": "Preview a subscription.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/subscriptions/preview", "body": { "type": "json", "data": "{}" } },
+          "docs": "Preview a subscription without persisting any data."
+        },
+        {
+          "info": { "name": "Retrieve a subscription.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/subscriptions/:id" },
+          "docs": "Retrieve a subscription."
+        },
+        {
+          "info": { "name": "Update a subscription.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/subscriptions/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update a subscription."
+        },
+        {
+          "info": { "name": "Cancel a subscription.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/subscriptions/:id" },
+          "docs": "Cancel a subscription."
+        },
+        {
+          "info": { "name": "List all plans.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/plans" },
+          "docs": "List all plans."
+        },
+        {
+          "info": { "name": "Create a new plan.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/plans", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new plan."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List all items.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/items" },
+          "docs": "List all catalog items."
+        },
+        {
+          "info": { "name": "Create a new item.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.invoiced.com/items", "body": { "type": "json", "data": "{}" } },
+          "docs": "Create a new catalog item."
+        },
+        {
+          "info": { "name": "Retrieve an item.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/items/:id" },
+          "docs": "Retrieve a catalog item."
+        },
+        {
+          "info": { "name": "Update an item.", "type": "http" },
+          "http": { "method": "PATCH", "url": "https://api.invoiced.com/items/:id", "body": { "type": "json", "data": "{}" } },
+          "docs": "Update a catalog item."
+        },
+        {
+          "info": { "name": "Delete an item.", "type": "http" },
+          "http": { "method": "DELETE", "url": "https://api.invoiced.com/items/:id" },
+          "docs": "Delete a catalog item."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": { "name": "List account events.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/events" },
+          "docs": "List account events that drive webhook callbacks."
+        },
+        {
+          "info": { "name": "Retrieve an event.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.invoiced.com/events/:id" },
+          "docs": "Retrieve a specific event."
+        }
+      ]
+    }
+  ]
+}
