@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/invoiced-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication. Use your Invoiced API key as the username and leave
+    the password blank. API keys are created under Settings -> Developers -> API Keys.
+  sources:
+  - openapi/invoiced-openapi.yml

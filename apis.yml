@@ -197,6 +197,12 @@ apis:
     invoice.paid and customer.created) that drive HTTP webhook callbacks to your
     systems.
 common:
+- type: DomainSecurity
+  url: security/invoiced-domain-security.yml
+- type: Authentication
+  url: authentication/invoiced-authentication.yml
+- url: https://www.invoiced.com/feed
+  type: Blog
 - type: GitHubOrganization
   url: https://github.com/Invoiced
 - type: LinkedIn
