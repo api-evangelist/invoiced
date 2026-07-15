@@ -197,6 +197,8 @@ apis:
     invoice.paid and customer.created) that drive HTTP webhook callbacks to your
     systems.
 common:
+- type: AgenticAccess
+  url: agentic-access/invoiced-agentic-access.yml
 - type: DomainSecurity
   url: security/invoiced-domain-security.yml
 - type: Authentication
