@@ -1,0 +1,167 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes Plans API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Plans
+paths:
+  /plans:
+    get:
+      operationId: listPlans
+      tags:
+      - Plans
+      summary: List all plans.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A paginated list of plans.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+    post:
+      operationId: createPlan
+      tags:
+      - Plans
+      summary: Create a new plan.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plan'
+      responses:
+        '201':
+          description: The created plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+  /plans/{id}:
+    parameters:
+    - $ref: '#/components/parameters/StringId'
+    get:
+      operationId: getPlan
+      tags:
+      - Plans
+      summary: Retrieve a plan.
+      responses:
+        '200':
+          description: The requested plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    patch:
+      operationId: updatePlan
+      tags:
+      - Plans
+      summary: Update a plan.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plan'
+      responses:
+        '200':
+          description: The updated plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    delete:
+      operationId: deletePlan
+      tags:
+      - Plans
+      summary: Delete a plan.
+      responses:
+        '204':
+          description: The plan was deleted.
+components:
+  parameters:
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+  schemas:
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: number
+        interval:
+          type: string
+          enum:
+          - day
+          - week
+          - month
+          - year
+        interval_count:
+          type: integer
+        pricing_mode:
+          type: string
+          enum:
+          - per_unit
+          - volume
+          - tiered
+        quantity_type:
+          type: string
+          enum:
+          - constant
+          - metered
+        catalog_item:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.

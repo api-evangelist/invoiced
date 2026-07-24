@@ -1,0 +1,200 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes Subscriptions API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Subscriptions
+paths:
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      tags:
+      - Subscriptions
+      summary: List all subscriptions.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+    post:
+      operationId: createSubscription
+      tags:
+      - Subscriptions
+      summary: Create a new subscription.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '201':
+          description: The created subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+  /subscriptions/preview:
+    post:
+      operationId: previewSubscription
+      tags:
+      - Subscriptions
+      summary: Preview a subscription without persisting any data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '200':
+          description: A preview of the subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+  /subscriptions/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getSubscription
+      tags:
+      - Subscriptions
+      summary: Retrieve a subscription.
+      responses:
+        '200':
+          description: The requested subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    patch:
+      operationId: updateSubscription
+      tags:
+      - Subscriptions
+      summary: Update a subscription.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '200':
+          description: The updated subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    delete:
+      operationId: cancelSubscription
+      tags:
+      - Subscriptions
+      summary: Cancel a subscription.
+      responses:
+        '204':
+          description: The subscription was canceled.
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+  schemas:
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        plan:
+          type: string
+        status:
+          type: string
+          enum:
+          - not_started
+          - active
+          - past_due
+          - finished
+          - canceled
+        start_date:
+          type: integer
+        period_start:
+          type: integer
+        period_end:
+          type: integer
+        quantity:
+          type: integer
+        cycles:
+          type: integer
+          nullable: true
+        addons:
+          type: array
+          items:
+            type: object
+        mrr:
+          type: number
+        recurring_total:
+          type: number
+        paused:
+          type: boolean
+        canceled_at:
+          type: integer
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.

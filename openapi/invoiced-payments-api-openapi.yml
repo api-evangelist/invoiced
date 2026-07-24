@@ -1,0 +1,192 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes Payments API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Payments
+paths:
+  /payments:
+    get:
+      operationId: listPayments
+      tags:
+      - Payments
+      summary: List all payments.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of payments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+    post:
+      operationId: createPayment
+      tags:
+      - Payments
+      summary: Record a new payment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '201':
+          description: The created payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+  /payments/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getPayment
+      tags:
+      - Payments
+      summary: Retrieve a payment.
+      responses:
+        '200':
+          description: The requested payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+    patch:
+      operationId: updatePayment
+      tags:
+      - Payments
+      summary: Update a payment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '200':
+          description: The updated payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+    delete:
+      operationId: deletePayment
+      tags:
+      - Payments
+      summary: Delete a payment.
+      responses:
+        '204':
+          description: The payment was deleted.
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+  schemas:
+    PaymentApplication:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - invoice
+          - credit_note
+          - estimate
+          - convenience_fee
+        invoice:
+          type: integer
+        amount:
+          type: number
+        document_type:
+          type: string
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        currency:
+          type: string
+        method:
+          type: string
+          enum:
+          - credit_card
+          - ach
+          - wire_transfer
+          - check
+          - cash
+          - paypal
+          - other
+        status:
+          type: string
+        amount:
+          type: number
+        balance:
+          type: number
+        date:
+          type: integer
+        reference:
+          type: string
+        notes:
+          type: string
+        applied_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentApplication'
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.

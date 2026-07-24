@@ -1,0 +1,205 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Credit Notes
+paths:
+  /credit_notes:
+    get:
+      operationId: listCreditNotes
+      tags:
+      - Credit Notes
+      summary: List all credit notes.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of credit notes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreditNote'
+    post:
+      operationId: createCreditNote
+      tags:
+      - Credit Notes
+      summary: Create a new credit note.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditNote'
+      responses:
+        '201':
+          description: The created credit note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditNote'
+  /credit_notes/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCreditNote
+      tags:
+      - Credit Notes
+      summary: Retrieve a credit note.
+      responses:
+        '200':
+          description: The requested credit note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditNote'
+    patch:
+      operationId: updateCreditNote
+      tags:
+      - Credit Notes
+      summary: Update a credit note.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditNote'
+      responses:
+        '200':
+          description: The updated credit note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditNote'
+    delete:
+      operationId: deleteCreditNote
+      tags:
+      - Credit Notes
+      summary: Delete a credit note.
+      responses:
+        '204':
+          description: The credit note was deleted.
+components:
+  schemas:
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
+    CreditNote:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        invoice:
+          type: integer
+        number:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - draft
+          - open
+          - paid
+          - closed
+          - voided
+        paid:
+          type: boolean
+        closed:
+          type: boolean
+        subtotal:
+          type: number
+        total:
+          type: number
+        balance:
+          type: number
+        date:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.

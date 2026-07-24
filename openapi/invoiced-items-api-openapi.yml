@@ -1,0 +1,162 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes Items API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Items
+paths:
+  /items:
+    get:
+      operationId: listItems
+      tags:
+      - Items
+      summary: List all catalog items.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A paginated list of items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+    post:
+      operationId: createItem
+      tags:
+      - Items
+      summary: Create a new catalog item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: The created item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+  /items/{id}:
+    parameters:
+    - $ref: '#/components/parameters/StringId'
+    get:
+      operationId: getItem
+      tags:
+      - Items
+      summary: Retrieve a catalog item.
+      responses:
+        '200':
+          description: The requested item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    patch:
+      operationId: updateItem
+      tags:
+      - Items
+      summary: Update a catalog item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: The updated item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    delete:
+      operationId: deleteItem
+      tags:
+      - Items
+      summary: Delete a catalog item.
+      responses:
+        '204':
+          description: The item was deleted.
+components:
+  parameters:
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+  schemas:
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        currency:
+          type: string
+        unit_cost:
+          type: number
+        type:
+          type: string
+          enum:
+          - product
+          - service
+        taxable:
+          type: boolean
+        taxes:
+          type: array
+          items:
+            type: object
+        gl_account:
+          type: string
+        avalara_tax_code:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.

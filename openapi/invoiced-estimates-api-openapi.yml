@@ -1,0 +1,300 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes Estimates API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Estimates
+paths:
+  /estimates:
+    get:
+      operationId: listEstimates
+      tags:
+      - Estimates
+      summary: List all estimates.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of estimates.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Estimate'
+    post:
+      operationId: createEstimate
+      tags:
+      - Estimates
+      summary: Create a new estimate.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estimate'
+      responses:
+        '201':
+          description: The created estimate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimate'
+  /estimates/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getEstimate
+      tags:
+      - Estimates
+      summary: Retrieve an estimate.
+      responses:
+        '200':
+          description: The requested estimate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimate'
+    patch:
+      operationId: updateEstimate
+      tags:
+      - Estimates
+      summary: Update an estimate.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estimate'
+      responses:
+        '200':
+          description: The updated estimate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimate'
+    delete:
+      operationId: deleteEstimate
+      tags:
+      - Estimates
+      summary: Delete an estimate.
+      responses:
+        '204':
+          description: The estimate was deleted.
+  /estimates/{id}/invoice:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    post:
+      operationId: convertEstimateToInvoice
+      tags:
+      - Estimates
+      summary: Convert an approved estimate into an invoice.
+      responses:
+        '201':
+          description: The newly created invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+components:
+  schemas:
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
+    Estimate:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        number:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - draft
+          - not_sent
+          - sent
+          - approved
+          - invoiced
+          - declined
+          - voided
+        invoice:
+          type: integer
+        subtotal:
+          type: number
+        total:
+          type: number
+        date:
+          type: integer
+        expiration_date:
+          type: integer
+        payment_terms:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        url:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        number:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - draft
+          - not_sent
+          - sent
+          - viewed
+          - past_due
+          - pending
+          - paid
+          - voided
+        draft:
+          type: boolean
+        closed:
+          type: boolean
+        paid:
+          type: boolean
+        autopay:
+          type: boolean
+        attempt_count:
+          type: integer
+        next_payment_attempt:
+          type: integer
+        subtotal:
+          type: number
+        discounts:
+          type: array
+          items:
+            type: object
+        taxes:
+          type: array
+          items:
+            type: object
+        total:
+          type: number
+        balance:
+          type: number
+        date:
+          type: integer
+        due_date:
+          type: integer
+        payment_terms:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        url:
+          type: string
+        payment_url:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.

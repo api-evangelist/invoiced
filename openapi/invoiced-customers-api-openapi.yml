@@ -1,0 +1,213 @@
+openapi: 3.0.1
+info:
+  title: Invoiced Credit Notes Customers API
+  description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+- url: https://api.invoiced.com
+  description: Production
+- url: https://api.sandbox.invoiced.com
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Customers
+paths:
+  /customers:
+    get:
+      operationId: listCustomers
+      tags:
+      - Customers
+      summary: List all customers.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of customers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      operationId: createCustomer
+      tags:
+      - Customers
+      summary: Create a new customer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: The created customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCustomer
+      tags:
+      - Customers
+      summary: Retrieve a customer.
+      responses:
+        '200':
+          description: The requested customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    patch:
+      operationId: updateCustomer
+      tags:
+      - Customers
+      summary: Update a customer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: The updated customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    delete:
+      operationId: deleteCustomer
+      tags:
+      - Customers
+      summary: Delete a customer.
+      responses:
+        '204':
+          description: The customer was deleted.
+  /customers/{id}/balance:
+    parameters:
+    - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCustomerBalance
+      tags:
+      - Customers
+      summary: Retrieve a customer's credit balance and amount outstanding.
+      responses:
+        '200':
+          description: The customer balance details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerBalance'
+components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+  schemas:
+    CustomerBalance:
+      type: object
+      properties:
+        available_credits:
+          type: number
+        history:
+          type: array
+          items:
+            type: object
+        past_due:
+          type: boolean
+        total_outstanding:
+          type: number
+    Customer:
+      type: object
+      required:
+      - name
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        name:
+          type: string
+        number:
+          type: string
+        email:
+          type: string
+        type:
+          type: string
+          enum:
+          - company
+          - person
+        autopay:
+          type: boolean
+        payment_terms:
+          type: string
+        attention_to:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+        tax_id:
+          type: string
+        phone:
+          type: string
+        credit_limit:
+          type: number
+        currency:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your Invoiced API key as the username and leave the password blank. API keys are created under Settings -> Developers -> API Keys.
