@@ -1,0 +1,30 @@
+{
+  "provider": "invoiced",
+  "sources": [
+    "invoiced-credit-notes-api-openapi.yml",
+    "invoiced-customers-api-openapi.yml",
+    "invoiced-estimates-api-openapi.yml",
+    "invoiced-events-api-openapi.yml",
+    "invoiced-invoices-api-openapi.yml",
+    "invoiced-items-api-openapi.yml",
+    "invoiced-payments-api-openapi.yml",
+    "invoiced-plans-api-openapi.yml",
+    "invoiced-subscriptions-api-openapi.yml"
+  ],
+  "outputs": [
+    "invoiced-credit-notes-api-openapi.yml",
+    "invoiced-customers-api-openapi.yml",
+    "invoiced-estimates-api-openapi.yml",
+    "invoiced-events-api-openapi.yml",
+    "invoiced-invoices-api-openapi.yml",
+    "invoiced-items-api-openapi.yml",
+    "invoiced-payments-api-openapi.yml",
+    "invoiced-plans-api-openapi.yml",
+    "invoiced-subscriptions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

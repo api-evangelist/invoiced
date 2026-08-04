@@ -1,0 +1,1201 @@
+openapi: 3.0.1
+info:
+  title: Invoiced API
+  description: >-
+    REST API for the Invoiced accounts-receivable and billing automation
+    platform. Manage customers, invoices, estimates, credit notes, payments,
+    subscriptions, plans, items, and events/webhooks. All requests must use
+    HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
+  termsOfService: https://www.invoiced.com/legal/terms-of-service
+  contact:
+    name: Invoiced Developers
+    email: developers@invoiced.com
+    url: https://developer.invoiced.com/api
+  version: '1.0'
+servers:
+  - url: https://api.invoiced.com
+    description: Production
+  - url: https://api.sandbox.invoiced.com
+    description: Sandbox
+security:
+  - basicAuth: []
+tags:
+  - name: Customers
+  - name: Invoices
+  - name: Estimates
+  - name: Credit Notes
+  - name: Payments
+  - name: Subscriptions
+  - name: Plans
+  - name: Items
+  - name: Events
+paths:
+  /customers:
+    get:
+      operationId: listCustomers
+      tags: [Customers]
+      summary: List all customers.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of customers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+    post:
+      operationId: createCustomer
+      tags: [Customers]
+      summary: Create a new customer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: The created customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+  /customers/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCustomer
+      tags: [Customers]
+      summary: Retrieve a customer.
+      responses:
+        '200':
+          description: The requested customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    patch:
+      operationId: updateCustomer
+      tags: [Customers]
+      summary: Update a customer.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: The updated customer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+    delete:
+      operationId: deleteCustomer
+      tags: [Customers]
+      summary: Delete a customer.
+      responses:
+        '204':
+          description: The customer was deleted.
+  /customers/{id}/balance:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCustomerBalance
+      tags: [Customers]
+      summary: Retrieve a customer's credit balance and amount outstanding.
+      responses:
+        '200':
+          description: The customer balance details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerBalance'
+  /invoices:
+    get:
+      operationId: listInvoices
+      tags: [Invoices]
+      summary: List all invoices.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of invoices.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Invoice'
+    post:
+      operationId: createInvoice
+      tags: [Invoices]
+      summary: Create a new invoice.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '201':
+          description: The created invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /invoices/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getInvoice
+      tags: [Invoices]
+      summary: Retrieve an invoice.
+      responses:
+        '200':
+          description: The requested invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+    patch:
+      operationId: updateInvoice
+      tags: [Invoices]
+      summary: Update an invoice.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+      responses:
+        '200':
+          description: The updated invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+    delete:
+      operationId: deleteInvoice
+      tags: [Invoices]
+      summary: Delete an invoice.
+      responses:
+        '204':
+          description: The invoice was deleted.
+  /invoices/{id}/emails:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    post:
+      operationId: sendInvoiceEmail
+      tags: [Invoices]
+      summary: Send an invoice to the customer by email.
+      responses:
+        '201':
+          description: The emails that were sent.
+  /invoices/{id}/pay:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    post:
+      operationId: payInvoice
+      tags: [Invoices]
+      summary: Trigger automatic payment collection on an invoice.
+      responses:
+        '200':
+          description: The invoice after a payment attempt.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /invoices/{id}/void:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    post:
+      operationId: voidInvoice
+      tags: [Invoices]
+      summary: Void an invoice.
+      responses:
+        '200':
+          description: The voided invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /estimates:
+    get:
+      operationId: listEstimates
+      tags: [Estimates]
+      summary: List all estimates.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of estimates.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Estimate'
+    post:
+      operationId: createEstimate
+      tags: [Estimates]
+      summary: Create a new estimate.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estimate'
+      responses:
+        '201':
+          description: The created estimate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimate'
+  /estimates/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getEstimate
+      tags: [Estimates]
+      summary: Retrieve an estimate.
+      responses:
+        '200':
+          description: The requested estimate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimate'
+    patch:
+      operationId: updateEstimate
+      tags: [Estimates]
+      summary: Update an estimate.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Estimate'
+      responses:
+        '200':
+          description: The updated estimate.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimate'
+    delete:
+      operationId: deleteEstimate
+      tags: [Estimates]
+      summary: Delete an estimate.
+      responses:
+        '204':
+          description: The estimate was deleted.
+  /estimates/{id}/invoice:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    post:
+      operationId: convertEstimateToInvoice
+      tags: [Estimates]
+      summary: Convert an approved estimate into an invoice.
+      responses:
+        '201':
+          description: The newly created invoice.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+  /credit_notes:
+    get:
+      operationId: listCreditNotes
+      tags: [Credit Notes]
+      summary: List all credit notes.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of credit notes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CreditNote'
+    post:
+      operationId: createCreditNote
+      tags: [Credit Notes]
+      summary: Create a new credit note.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditNote'
+      responses:
+        '201':
+          description: The created credit note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditNote'
+  /credit_notes/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getCreditNote
+      tags: [Credit Notes]
+      summary: Retrieve a credit note.
+      responses:
+        '200':
+          description: The requested credit note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditNote'
+    patch:
+      operationId: updateCreditNote
+      tags: [Credit Notes]
+      summary: Update a credit note.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditNote'
+      responses:
+        '200':
+          description: The updated credit note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditNote'
+    delete:
+      operationId: deleteCreditNote
+      tags: [Credit Notes]
+      summary: Delete a credit note.
+      responses:
+        '204':
+          description: The credit note was deleted.
+  /payments:
+    get:
+      operationId: listPayments
+      tags: [Payments]
+      summary: List all payments.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of payments.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payment'
+    post:
+      operationId: createPayment
+      tags: [Payments]
+      summary: Record a new payment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '201':
+          description: The created payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+  /payments/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getPayment
+      tags: [Payments]
+      summary: Retrieve a payment.
+      responses:
+        '200':
+          description: The requested payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+    patch:
+      operationId: updatePayment
+      tags: [Payments]
+      summary: Update a payment.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '200':
+          description: The updated payment.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+    delete:
+      operationId: deletePayment
+      tags: [Payments]
+      summary: Delete a payment.
+      responses:
+        '204':
+          description: The payment was deleted.
+  /subscriptions:
+    get:
+      operationId: listSubscriptions
+      tags: [Subscriptions]
+      summary: List all subscriptions.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          description: A paginated list of subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Subscription'
+    post:
+      operationId: createSubscription
+      tags: [Subscriptions]
+      summary: Create a new subscription.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '201':
+          description: The created subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+  /subscriptions/preview:
+    post:
+      operationId: previewSubscription
+      tags: [Subscriptions]
+      summary: Preview a subscription without persisting any data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '200':
+          description: A preview of the subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+  /subscriptions/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getSubscription
+      tags: [Subscriptions]
+      summary: Retrieve a subscription.
+      responses:
+        '200':
+          description: The requested subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    patch:
+      operationId: updateSubscription
+      tags: [Subscriptions]
+      summary: Update a subscription.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Subscription'
+      responses:
+        '200':
+          description: The updated subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Subscription'
+    delete:
+      operationId: cancelSubscription
+      tags: [Subscriptions]
+      summary: Cancel a subscription.
+      responses:
+        '204':
+          description: The subscription was canceled.
+  /plans:
+    get:
+      operationId: listPlans
+      tags: [Plans]
+      summary: List all plans.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A paginated list of plans.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Plan'
+    post:
+      operationId: createPlan
+      tags: [Plans]
+      summary: Create a new plan.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plan'
+      responses:
+        '201':
+          description: The created plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+  /plans/{id}:
+    parameters:
+      - $ref: '#/components/parameters/StringId'
+    get:
+      operationId: getPlan
+      tags: [Plans]
+      summary: Retrieve a plan.
+      responses:
+        '200':
+          description: The requested plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    patch:
+      operationId: updatePlan
+      tags: [Plans]
+      summary: Update a plan.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Plan'
+      responses:
+        '200':
+          description: The updated plan.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+    delete:
+      operationId: deletePlan
+      tags: [Plans]
+      summary: Delete a plan.
+      responses:
+        '204':
+          description: The plan was deleted.
+  /items:
+    get:
+      operationId: listItems
+      tags: [Items]
+      summary: List all catalog items.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: A paginated list of items.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+    post:
+      operationId: createItem
+      tags: [Items]
+      summary: Create a new catalog item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '201':
+          description: The created item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+  /items/{id}:
+    parameters:
+      - $ref: '#/components/parameters/StringId'
+    get:
+      operationId: getItem
+      tags: [Items]
+      summary: Retrieve a catalog item.
+      responses:
+        '200':
+          description: The requested item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    patch:
+      operationId: updateItem
+      tags: [Items]
+      summary: Update a catalog item.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: The updated item.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+    delete:
+      operationId: deleteItem
+      tags: [Items]
+      summary: Delete a catalog item.
+      responses:
+        '204':
+          description: The item was deleted.
+  /events:
+    get:
+      operationId: listEvents
+      tags: [Events]
+      summary: List account events.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+        - name: related_to
+          in: query
+          description: Filter events to those related to a given object.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A paginated list of events.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+  /events/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      operationId: getEvent
+      tags: [Events]
+      summary: Retrieve a specific event.
+      responses:
+        '200':
+          description: The requested event.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: >-
+        HTTP Basic authentication. Use your Invoiced API key as the username
+        and leave the password blank. API keys are created under
+        Settings -> Developers -> API Keys.
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+  schemas:
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
+    Customer:
+      type: object
+      required:
+        - name
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        name:
+          type: string
+        number:
+          type: string
+        email:
+          type: string
+        type:
+          type: string
+          enum: [company, person]
+        autopay:
+          type: boolean
+        payment_terms:
+          type: string
+        attention_to:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+        tax_id:
+          type: string
+        phone:
+          type: string
+        credit_limit:
+          type: number
+        currency:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    CustomerBalance:
+      type: object
+      properties:
+        available_credits:
+          type: number
+        history:
+          type: array
+          items:
+            type: object
+        past_due:
+          type: boolean
+        total_outstanding:
+          type: number
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        number:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [draft, not_sent, sent, viewed, past_due, pending, paid, voided]
+        draft:
+          type: boolean
+        closed:
+          type: boolean
+        paid:
+          type: boolean
+        autopay:
+          type: boolean
+        attempt_count:
+          type: integer
+        next_payment_attempt:
+          type: integer
+        subtotal:
+          type: number
+        discounts:
+          type: array
+          items:
+            type: object
+        taxes:
+          type: array
+          items:
+            type: object
+        total:
+          type: number
+        balance:
+          type: number
+        date:
+          type: integer
+        due_date:
+          type: integer
+        payment_terms:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        url:
+          type: string
+        payment_url:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Estimate:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        number:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [draft, not_sent, sent, approved, invoiced, declined, voided]
+        invoice:
+          type: integer
+        subtotal:
+          type: number
+        total:
+          type: number
+        date:
+          type: integer
+        expiration_date:
+          type: integer
+        payment_terms:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        url:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    CreditNote:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        invoice:
+          type: integer
+        number:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [draft, open, paid, closed, voided]
+        paid:
+          type: boolean
+        closed:
+          type: boolean
+        subtotal:
+          type: number
+        total:
+          type: number
+        balance:
+          type: number
+        date:
+          type: integer
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    PaymentApplication:
+      type: object
+      properties:
+        type:
+          type: string
+          enum: [invoice, credit_note, estimate, convenience_fee]
+        invoice:
+          type: integer
+        amount:
+          type: number
+        document_type:
+          type: string
+    Payment:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        currency:
+          type: string
+        method:
+          type: string
+          enum: [credit_card, ach, wire_transfer, check, cash, paypal, other]
+        status:
+          type: string
+        amount:
+          type: number
+        balance:
+          type: number
+        date:
+          type: integer
+        reference:
+          type: string
+        notes:
+          type: string
+        applied_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentApplication'
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Subscription:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        plan:
+          type: string
+        status:
+          type: string
+          enum: [not_started, active, past_due, finished, canceled]
+        start_date:
+          type: integer
+        period_start:
+          type: integer
+        period_end:
+          type: integer
+        quantity:
+          type: integer
+        cycles:
+          type: integer
+          nullable: true
+        addons:
+          type: array
+          items:
+            type: object
+        mrr:
+          type: number
+        recurring_total:
+          type: number
+        paused:
+          type: boolean
+        canceled_at:
+          type: integer
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Plan:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: number
+        interval:
+          type: string
+          enum: [day, week, month, year]
+        interval_count:
+          type: integer
+        pricing_mode:
+          type: string
+          enum: [per_unit, volume, tiered]
+        quantity_type:
+          type: string
+          enum: [constant, metered]
+        catalog_item:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Item:
+      type: object
+      properties:
+        id:
+          type: string
+        object:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        currency:
+          type: string
+        unit_cost:
+          type: number
+        type:
+          type: string
+          enum: [product, service]
+        taxable:
+          type: boolean
+        taxes:
+          type: array
+          items:
+            type: object
+        gl_account:
+          type: string
+        avalara_tax_code:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
+    Event:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        type:
+          type: string
+          description: The event type in object.action form, e.g. invoice.paid.
+        timestamp:
+          type: integer
+        data:
+          type: object
+          properties:
+            object:
+              type: object
+            previous:
+              type: object
+        user:
+          type: integer
