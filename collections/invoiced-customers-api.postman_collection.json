@@ -1,0 +1,623 @@
+{
+  "item": [
+    {
+      "id": "e0799ccf-aae2-456a-9486-9271d0790738",
+      "name": "Customers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "855d80c6-f661-4737-a64b-4889332c37b0",
+          "name": "List all customers.",
+          "request": {
+            "name": "List all customers.",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number for paginated list responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "The number of records to return per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "616ed09b-2fd0-4bd3-b244-35d3325ab5e6",
+              "name": "A paginated list of customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"id\": 7808,\n    \"object\": \"string\",\n    \"number\": \"string\",\n    \"email\": \"string\",\n    \"type\": \"person\",\n    \"autopay\": true,\n    \"payment_terms\": \"string\",\n    \"attention_to\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postal_code\": \"string\",\n    \"country\": \"string\",\n    \"tax_id\": \"string\",\n    \"phone\": \"string\",\n    \"credit_limit\": 6612.741633012281,\n    \"currency\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 3148,\n    \"updated_at\": 1838\n  },\n  {\n    \"name\": \"string\",\n    \"id\": 6963,\n    \"object\": \"string\",\n    \"number\": \"string\",\n    \"email\": \"string\",\n    \"type\": \"company\",\n    \"autopay\": true,\n    \"payment_terms\": \"string\",\n    \"attention_to\": \"string\",\n    \"address1\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postal_code\": \"string\",\n    \"country\": \"string\",\n    \"tax_id\": \"string\",\n    \"phone\": \"string\",\n    \"credit_limit\": 2848.145218685457,\n    \"currency\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 8358,\n    \"updated_at\": 486\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09df26c6-44fc-4d9c-a7dd-46bd8941dde9",
+          "name": "Create a new customer.",
+          "request": {
+            "name": "Create a new customer.",
+            "description": {},
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "640db846-fad9-486e-9d86-1b66d7dd3577",
+              "name": "The created customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcea0630-9106-4002-be75-3ba16d793767",
+          "name": "Retrieve a customer.",
+          "request": {
+            "name": "Retrieve a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd2846c0-8c18-4e44-94f5-396462410a7c",
+              "name": "The requested customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4474d39a-e9d7-4597-a862-e1cf49fad161",
+          "name": "Update a customer.",
+          "request": {
+            "name": "Update a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec3eeb67-2030-4201-b57a-4f65eb55a41e",
+              "name": "The updated customer.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"number\": \"<string>\",\n  \"email\": \"<string>\",\n  \"type\": \"<string>\",\n  \"autopay\": \"<boolean>\",\n  \"payment_terms\": \"<string>\",\n  \"attention_to\": \"<string>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"state\": \"<string>\",\n  \"postal_code\": \"<string>\",\n  \"country\": \"<string>\",\n  \"tax_id\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"credit_limit\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "97549617-7669-4244-ad2f-1e15c1673097",
+          "name": "Delete a customer.",
+          "request": {
+            "name": "Delete a customer.",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62967b53-2735-4441-8834-4f3f8a049004",
+              "name": "The customer was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83f2d0c8-aaf2-4518-89f1-d55e81c19d80",
+          "name": "Retrieve a customer's credit balance and amount outstanding.",
+          "request": {
+            "name": "Retrieve a customer's credit balance and amount outstanding.",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":id",
+                "balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09093c4c-53db-46c3-b5a3-a26523875457",
+              "name": "The customer balance details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":id",
+                    "balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"available_credits\": 517.7467594557539,\n  \"past_due\": true,\n  \"total_outstanding\": 1247.1466399610442\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.invoiced.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c5894136-8548-4ac1-8a24-61470678ffe6",
+    "name": "Invoiced Credit Notes Customers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.\n\nContact Support:\n Name: Invoiced Developers\n Email: developers@invoiced.com",
+      "type": "text/plain"
+    }
+  }
+}

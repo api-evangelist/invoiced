@@ -1,0 +1,151 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoiced Credit Notes Estimates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Estimates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all estimates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/estimates",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number for paginated list responses."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to return per page (max 100)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by object attributes."
+              }
+            ]
+          },
+          "docs": "List all estimates."
+        },
+        {
+          "info": {
+            "name": "Create a new estimate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/estimates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new estimate."
+        },
+        {
+          "info": {
+            "name": "Retrieve an estimate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/estimates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Retrieve an estimate."
+        },
+        {
+          "info": {
+            "name": "Update an estimate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.invoiced.com/estimates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an estimate."
+        },
+        {
+          "info": {
+            "name": "Delete an estimate.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.invoiced.com/estimates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Delete an estimate."
+        },
+        {
+          "info": {
+            "name": "Convert an approved estimate into an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/estimates/:id/invoice",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Convert an approved estimate into an invoice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

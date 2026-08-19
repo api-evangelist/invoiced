@@ -1,0 +1,528 @@
+{
+  "item": [
+    {
+      "id": "58509db3-1a9e-40ba-93c1-9639e00c6461",
+      "name": "Items",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e92b3c48-b4fd-4ad5-875b-e69a1c756213",
+          "name": "List all catalog items.",
+          "request": {
+            "name": "List all catalog items.",
+            "description": {},
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number for paginated list responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "The number of records to return per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47f8397d-388c-4cfe-bbeb-0d3590bf5a47",
+              "name": "A paginated list of items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"object\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"currency\": \"string\",\n    \"unit_cost\": 1672.3361193782926,\n    \"type\": \"product\",\n    \"taxable\": true,\n    \"gl_account\": \"string\",\n    \"avalara_tax_code\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 3875,\n    \"updated_at\": 5167\n  },\n  {\n    \"id\": \"string\",\n    \"object\": \"string\",\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"currency\": \"string\",\n    \"unit_cost\": 1927.122829422433,\n    \"type\": \"product\",\n    \"taxable\": false,\n    \"gl_account\": \"string\",\n    \"avalara_tax_code\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 837,\n    \"updated_at\": 9634\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c79a179-40de-4a22-9e6a-131021bb77cd",
+          "name": "Create a new catalog item.",
+          "request": {
+            "name": "Create a new catalog item.",
+            "description": {},
+            "url": {
+              "path": [
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5dea5382-b203-4615-b0ca-90c358dd9464",
+              "name": "The created item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbcf63a3-e723-4076-a1ff-efc92a51096d",
+          "name": "Retrieve a catalog item.",
+          "request": {
+            "name": "Retrieve a catalog item.",
+            "description": {},
+            "url": {
+              "path": [
+                "items",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a197c6c-fb54-4492-ab58-e626f0a93bc8",
+              "name": "The requested item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11b59a42-24a4-4f52-ba38-77c002605f57",
+          "name": "Update a catalog item.",
+          "request": {
+            "name": "Update a catalog item.",
+            "description": {},
+            "url": {
+              "path": [
+                "items",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "10669765-0699-4eb8-b703-838d35d775d8",
+              "name": "The updated item.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<string>\",\n  \"object\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"unit_cost\": \"<number>\",\n  \"type\": \"<string>\",\n  \"taxable\": \"<boolean>\",\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"gl_account\": \"<string>\",\n  \"avalara_tax_code\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13a60f4d-82ec-4bf9-b1b9-a63ad5f67771",
+          "name": "Delete a catalog item.",
+          "request": {
+            "name": "Delete a catalog item.",
+            "description": {},
+            "url": {
+              "path": [
+                "items",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The identifier of the object."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e27b00c-3a6a-4f7d-be65-5f167ff8d019",
+              "name": "The item was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "items",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.invoiced.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a0052f0-e206-4e54-a8ce-a219eb7d5dad",
+    "name": "Invoiced Credit Notes Items API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.\n\nContact Support:\n Name: Invoiced Developers\n Email: developers@invoiced.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoiced Credit Notes Subscriptions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all subscriptions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/subscriptions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number for paginated list responses."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to return per page (max 100)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by object attributes."
+              }
+            ]
+          },
+          "docs": "List all subscriptions."
+        },
+        {
+          "info": {
+            "name": "Create a new subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new subscription."
+        },
+        {
+          "info": {
+            "name": "Preview a subscription without persisting any data.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/subscriptions/preview",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Preview a subscription without persisting any data."
+        },
+        {
+          "info": {
+            "name": "Retrieve a subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Retrieve a subscription."
+        },
+        {
+          "info": {
+            "name": "Update a subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.invoiced.com/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a subscription."
+        },
+        {
+          "info": {
+            "name": "Cancel a subscription.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.invoiced.com/subscriptions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Cancel a subscription."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

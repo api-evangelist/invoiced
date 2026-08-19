@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoiced Credit Notes Items API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all catalog items.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/items",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number for paginated list responses."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to return per page (max 100)."
+              }
+            ]
+          },
+          "docs": "List all catalog items."
+        },
+        {
+          "info": {
+            "name": "Create a new catalog item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/items",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new catalog item."
+        },
+        {
+          "info": {
+            "name": "Retrieve a catalog item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the object."
+              }
+            ]
+          },
+          "docs": "Retrieve a catalog item."
+        },
+        {
+          "info": {
+            "name": "Update a catalog item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.invoiced.com/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a catalog item."
+        },
+        {
+          "info": {
+            "name": "Delete a catalog item.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.invoiced.com/items/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the object."
+              }
+            ]
+          },
+          "docs": "Delete a catalog item."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

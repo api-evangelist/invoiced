@@ -1,0 +1,528 @@
+{
+  "item": [
+    {
+      "id": "c9263980-e6c8-4a72-be44-650c3663b65b",
+      "name": "Credit Notes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f54beb2-bfd7-4419-a06e-87398a1ac2c0",
+          "name": "List all credit notes.",
+          "request": {
+            "name": "List all credit notes.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit_notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number for paginated list responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "The number of records to return per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ea41845-a45b-40d1-8463-783bc1a304c8",
+              "name": "A paginated list of credit notes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit_notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 423,\n    \"object\": \"string\",\n    \"customer\": 8406,\n    \"invoice\": 7281,\n    \"number\": \"string\",\n    \"currency\": \"string\",\n    \"status\": \"paid\",\n    \"paid\": true,\n    \"closed\": false,\n    \"subtotal\": 3242.345404639243,\n    \"total\": 7404.455409392829,\n    \"balance\": 3474.887265451517,\n    \"date\": 9194,\n    \"items\": [\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 8330.768646966726,\n        \"unit_cost\": 280.95641054261654,\n        \"amount\": 407.71491655670957,\n        \"discountable\": true,\n        \"taxable\": true,\n        \"metadata\": {}\n      },\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 1072.592050393114,\n        \"unit_cost\": 3577.863468264627,\n        \"amount\": 7312.83165864113,\n        \"discountable\": true,\n        \"taxable\": false,\n        \"metadata\": {}\n      }\n    ],\n    \"notes\": \"string\",\n    \"pdf_url\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 1096,\n    \"updated_at\": 5505\n  },\n  {\n    \"id\": 2252,\n    \"object\": \"string\",\n    \"customer\": 1663,\n    \"invoice\": 8046,\n    \"number\": \"string\",\n    \"currency\": \"string\",\n    \"status\": \"paid\",\n    \"paid\": true,\n    \"closed\": true,\n    \"subtotal\": 1584.4752252032956,\n    \"total\": 7066.674422230251,\n    \"balance\": 6607.845767304814,\n    \"date\": 419,\n    \"items\": [\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 2372.598785449549,\n        \"unit_cost\": 9397.809082730662,\n        \"amount\": 7885.6240493307305,\n        \"discountable\": false,\n        \"taxable\": true,\n        \"metadata\": {}\n      },\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 8123.902913133955,\n        \"unit_cost\": 6632.698351348542,\n        \"amount\": 8212.27719528274,\n        \"discountable\": true,\n        \"taxable\": true,\n        \"metadata\": {}\n      }\n    ],\n    \"notes\": \"string\",\n    \"pdf_url\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 3492,\n    \"updated_at\": 5370\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9415fe9c-64b7-495c-bfb1-4c56355b7116",
+          "name": "Create a new credit note.",
+          "request": {
+            "name": "Create a new credit note.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit_notes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fbfac832-4f18-463d-8961-b399b9e05643",
+              "name": "The created credit note.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit_notes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0eac4884-813d-4b35-9429-9d1a4cd3ed0c",
+          "name": "Retrieve a credit note.",
+          "request": {
+            "name": "Retrieve a credit note.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit_notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8c544e5-3b98-4dc3-b7a1-67763327b042",
+              "name": "The requested credit note.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit_notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d9a18fb-f6fb-494e-98f5-c33bcec3de44",
+          "name": "Update a credit note.",
+          "request": {
+            "name": "Update a credit note.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit_notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa2b5db3-37c2-41fa-801a-f469b0d66b2e",
+              "name": "The updated credit note.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit_notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"invoice\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"paid\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"subtotal\": \"<number>\",\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab777698-dd8e-4921-a9fa-35662ea01b6c",
+          "name": "Delete a credit note.",
+          "request": {
+            "name": "Delete a credit note.",
+            "description": {},
+            "url": {
+              "path": [
+                "credit_notes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "559b6195-6d6e-4372-bde1-46a4001f9b35",
+              "name": "The credit note was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credit_notes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.invoiced.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "225dca5d-4624-4d9f-bd7b-83421150e18e",
+    "name": "Invoiced Credit Notes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.\n\nContact Support:\n Name: Invoiced Developers\n Email: developers@invoiced.com",
+      "type": "text/plain"
+    }
+  }
+}

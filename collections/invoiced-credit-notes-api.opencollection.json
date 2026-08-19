@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoiced Credit Notes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all credit notes.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/credit_notes",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number for paginated list responses."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to return per page (max 100)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by object attributes."
+              }
+            ]
+          },
+          "docs": "List all credit notes."
+        },
+        {
+          "info": {
+            "name": "Create a new credit note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/credit_notes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new credit note."
+        },
+        {
+          "info": {
+            "name": "Retrieve a credit note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/credit_notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Retrieve a credit note."
+        },
+        {
+          "info": {
+            "name": "Update a credit note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.invoiced.com/credit_notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a credit note."
+        },
+        {
+          "info": {
+            "name": "Delete a credit note.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.invoiced.com/credit_notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Delete a credit note."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

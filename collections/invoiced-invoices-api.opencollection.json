@@ -1,0 +1,189 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Invoiced Credit Notes Invoices API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all invoices.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/invoices",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "The page number for paginated list responses."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "The number of records to return per page (max 100)."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by object attributes."
+              }
+            ]
+          },
+          "docs": "List all invoices."
+        },
+        {
+          "info": {
+            "name": "Create a new invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/invoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new invoice."
+        },
+        {
+          "info": {
+            "name": "Retrieve an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.invoiced.com/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Retrieve an invoice."
+        },
+        {
+          "info": {
+            "name": "Update an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.invoiced.com/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an invoice."
+        },
+        {
+          "info": {
+            "name": "Delete an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.invoiced.com/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Delete an invoice."
+        },
+        {
+          "info": {
+            "name": "Send an invoice to the customer by email.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/invoices/:id/emails",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Send an invoice to the customer by email."
+        },
+        {
+          "info": {
+            "name": "Trigger automatic payment collection on an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/invoices/:id/pay",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Trigger automatic payment collection on an invoice."
+        },
+        {
+          "info": {
+            "name": "Void an invoice.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.invoiced.com/invoices/:id/void",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The integer identifier of the object."
+              }
+            ]
+          },
+          "docs": "Void an invoice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

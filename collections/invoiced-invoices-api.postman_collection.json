@@ -1,0 +1,803 @@
+{
+  "item": [
+    {
+      "id": "16afc1e9-dd18-4869-b230-6a7a41030bbb",
+      "name": "Invoices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1024062a-94bf-49e3-a0fa-0671f161c323",
+          "name": "List all invoices.",
+          "request": {
+            "name": "List all invoices.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number for paginated list responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "The number of records to return per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47ed31ad-d3f6-41a5-b5ce-e38edf8bd252",
+              "name": "A paginated list of invoices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 6537,\n    \"object\": \"string\",\n    \"customer\": 4121,\n    \"number\": \"string\",\n    \"name\": \"string\",\n    \"currency\": \"string\",\n    \"status\": \"sent\",\n    \"draft\": false,\n    \"closed\": true,\n    \"paid\": true,\n    \"autopay\": true,\n    \"attempt_count\": 8528,\n    \"next_payment_attempt\": 9539,\n    \"subtotal\": 3964.2258486940905,\n    \"total\": 3361.6693677372787,\n    \"balance\": 450.1586772182176,\n    \"date\": 7234,\n    \"due_date\": 9831,\n    \"payment_terms\": \"string\",\n    \"items\": [\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 4839.022271851419,\n        \"unit_cost\": 6745.554604972922,\n        \"amount\": 7830.619864896966,\n        \"discountable\": true,\n        \"taxable\": true,\n        \"metadata\": {}\n      },\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 6897.498642703052,\n        \"unit_cost\": 8502.181580763421,\n        \"amount\": 3905.9358170597125,\n        \"discountable\": false,\n        \"taxable\": false,\n        \"metadata\": {}\n      }\n    ],\n    \"notes\": \"string\",\n    \"url\": \"string\",\n    \"payment_url\": \"string\",\n    \"pdf_url\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 8166,\n    \"updated_at\": 8553\n  },\n  {\n    \"id\": 1331,\n    \"object\": \"string\",\n    \"customer\": 6026,\n    \"number\": \"string\",\n    \"name\": \"string\",\n    \"currency\": \"string\",\n    \"status\": \"voided\",\n    \"draft\": false,\n    \"closed\": false,\n    \"paid\": true,\n    \"autopay\": false,\n    \"attempt_count\": 6734,\n    \"next_payment_attempt\": 6101,\n    \"subtotal\": 9304.65270677404,\n    \"total\": 6497.8126601314025,\n    \"balance\": 7679.233200702218,\n    \"date\": 2904,\n    \"due_date\": 5603,\n    \"payment_terms\": \"string\",\n    \"items\": [\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 6849.06431131997,\n        \"unit_cost\": 8082.509650379802,\n        \"amount\": 1694.041339683634,\n        \"discountable\": true,\n        \"taxable\": true,\n        \"metadata\": {}\n      },\n      {\n        \"catalog_item\": \"string\",\n        \"type\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"quantity\": 1786.4602902408155,\n        \"unit_cost\": 9917.665477269986,\n        \"amount\": 2338.0095543095413,\n        \"discountable\": true,\n        \"taxable\": true,\n        \"metadata\": {}\n      }\n    ],\n    \"notes\": \"string\",\n    \"url\": \"string\",\n    \"payment_url\": \"string\",\n    \"pdf_url\": \"string\",\n    \"metadata\": {},\n    \"created_at\": 9918,\n    \"updated_at\": 6231\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bef522f4-ed4d-4bb1-a568-1c568b96c26a",
+          "name": "Create a new invoice.",
+          "request": {
+            "name": "Create a new invoice.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cc4c02f-acbc-462e-8fbe-83a10146e3f4",
+              "name": "The created invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ae96232-770a-408b-8acb-dd909172cf4b",
+          "name": "Retrieve an invoice.",
+          "request": {
+            "name": "Retrieve an invoice.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e2e31e5-f754-42db-b195-f2cc787f86ed",
+              "name": "The requested invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93705085-6852-42b8-a160-ea88260173bd",
+          "name": "Update an invoice.",
+          "request": {
+            "name": "Update an invoice.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04f1cc1d-623a-4973-838e-9d1c588c1829",
+              "name": "The updated invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3051d63c-8101-440c-ba2b-f96449eaeaa0",
+          "name": "Delete an invoice.",
+          "request": {
+            "name": "Delete an invoice.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84611cc3-4aa9-4491-a89e-b36692603b9d",
+              "name": "The invoice was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e9b845c-86d8-490d-8e08-04b09466c588",
+          "name": "Send an invoice to the customer by email.",
+          "request": {
+            "name": "Send an invoice to the customer by email.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id",
+                "emails"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5af3189b-60ec-4222-a0d3-ccc254663cc1",
+              "name": "The emails that were sent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id",
+                    "emails"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4996a923-82c5-4695-bb8b-62a392c19cf7",
+          "name": "Trigger automatic payment collection on an invoice.",
+          "request": {
+            "name": "Trigger automatic payment collection on an invoice.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id",
+                "pay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4126f7bc-3d20-4652-814c-aa8980815cec",
+              "name": "The invoice after a payment attempt.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "737b40ce-48b8-4766-bba2-74442d009750",
+          "name": "Void an invoice.",
+          "request": {
+            "name": "Void an invoice.",
+            "description": {},
+            "url": {
+              "path": [
+                "invoices",
+                ":id",
+                "void"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8574cfb-2899-4e10-864d-0e5ecf359830",
+              "name": "The voided invoice.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invoices",
+                    ":id",
+                    "void"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"number\": \"<string>\",\n  \"name\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"status\": \"<string>\",\n  \"draft\": \"<boolean>\",\n  \"closed\": \"<boolean>\",\n  \"paid\": \"<boolean>\",\n  \"autopay\": \"<boolean>\",\n  \"attempt_count\": \"<integer>\",\n  \"next_payment_attempt\": \"<integer>\",\n  \"subtotal\": \"<number>\",\n  \"discounts\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"taxes\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"total\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"due_date\": \"<integer>\",\n  \"payment_terms\": \"<string>\",\n  \"items\": [\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    },\n    {\n      \"catalog_item\": \"<string>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"quantity\": \"<number>\",\n      \"unit_cost\": \"<number>\",\n      \"amount\": \"<number>\",\n      \"discountable\": \"<boolean>\",\n      \"taxable\": \"<boolean>\",\n      \"metadata\": \"<object>\"\n    }\n  ],\n  \"notes\": \"<string>\",\n  \"url\": \"<string>\",\n  \"payment_url\": \"<string>\",\n  \"pdf_url\": \"<string>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.invoiced.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78d4010c-82ae-4e57-a6be-b6dcfc9b14c7",
+    "name": "Invoiced Credit Notes Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.\n\nContact Support:\n Name: Invoiced Developers\n Email: developers@invoiced.com",
+      "type": "text/plain"
+    }
+  }
+}

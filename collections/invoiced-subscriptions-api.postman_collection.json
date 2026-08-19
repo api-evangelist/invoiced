@@ -1,0 +1,626 @@
+{
+  "item": [
+    {
+      "id": "628444fc-e74a-487f-9e67-72824a864cbd",
+      "name": "Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de0e09dd-9383-402d-be7a-88d4eb2e99db",
+          "name": "List all subscriptions.",
+          "request": {
+            "name": "List all subscriptions.",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number for paginated list responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "The number of records to return per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ccdc730d-53e5-40b2-a58d-1c6c6536beb9",
+              "name": "A paginated list of subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 846,\n    \"object\": \"string\",\n    \"customer\": 4693,\n    \"plan\": \"string\",\n    \"status\": \"past_due\",\n    \"start_date\": 932,\n    \"period_start\": 4734,\n    \"period_end\": 3139,\n    \"quantity\": 4438,\n    \"cycles\": 31,\n    \"mrr\": 9437.04639924395,\n    \"recurring_total\": 5950.552770448814,\n    \"paused\": true,\n    \"canceled_at\": 7451,\n    \"metadata\": {},\n    \"created_at\": 2011,\n    \"updated_at\": 9646\n  },\n  {\n    \"id\": 7101,\n    \"object\": \"string\",\n    \"customer\": 9676,\n    \"plan\": \"string\",\n    \"status\": \"active\",\n    \"start_date\": 4909,\n    \"period_start\": 1090,\n    \"period_end\": 6482,\n    \"quantity\": 955,\n    \"cycles\": 679,\n    \"mrr\": 1358.5487703588117,\n    \"recurring_total\": 9600.778595224729,\n    \"paused\": false,\n    \"canceled_at\": 568,\n    \"metadata\": {},\n    \"created_at\": 7616,\n    \"updated_at\": 7321\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e632123e-e746-40dc-b56b-c90799b3b441",
+          "name": "Create a new subscription.",
+          "request": {
+            "name": "Create a new subscription.",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4bd4f1b-c792-491b-9a02-f190550cdcbc",
+              "name": "The created subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5e89d73-66e3-4898-a519-549571c772c8",
+          "name": "Preview a subscription without persisting any data.",
+          "request": {
+            "name": "Preview a subscription without persisting any data.",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                "preview"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcf697cb-b0e2-4de5-8cde-2d1bec184b86",
+              "name": "A preview of the subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "preview"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "096d39a4-4c08-4488-82e6-5e309dd26b75",
+          "name": "Retrieve a subscription.",
+          "request": {
+            "name": "Retrieve a subscription.",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef051165-568e-4620-8e27-c78e7571ac4f",
+              "name": "The requested subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d51f6f1d-c943-4806-96aa-66201aeaaaaf",
+          "name": "Update a subscription.",
+          "request": {
+            "name": "Update a subscription.",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d5ce1ab-a427-47ef-b08b-6173cc695872",
+              "name": "The updated subscription.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"plan\": \"<string>\",\n  \"status\": \"<string>\",\n  \"start_date\": \"<integer>\",\n  \"period_start\": \"<integer>\",\n  \"period_end\": \"<integer>\",\n  \"quantity\": \"<integer>\",\n  \"cycles\": \"<integer>\",\n  \"addons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"mrr\": \"<number>\",\n  \"recurring_total\": \"<number>\",\n  \"paused\": \"<boolean>\",\n  \"canceled_at\": \"<integer>\",\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb98c6a0-b4c7-43d8-be41-56d664b1eed6",
+          "name": "Cancel a subscription.",
+          "request": {
+            "name": "Cancel a subscription.",
+            "description": {},
+            "url": {
+              "path": [
+                "subscriptions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "256443e0-39a6-4d75-afbd-ba58237cf39c",
+              "name": "The subscription was canceled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.invoiced.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1bd5bbbd-1903-4d48-b81b-2d3cac5676d5",
+    "name": "Invoiced Credit Notes Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.\n\nContact Support:\n Name: Invoiced Developers\n Email: developers@invoiced.com",
+      "type": "text/plain"
+    }
+  }
+}

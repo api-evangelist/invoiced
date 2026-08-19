@@ -1,0 +1,528 @@
+{
+  "item": [
+    {
+      "id": "99549e28-fde7-4853-9bd9-309e1d9e320a",
+      "name": "Payments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84fd10c8-3e7f-4f4f-a6ab-84b09ea792ee",
+          "name": "List all payments.",
+          "request": {
+            "name": "List all payments.",
+            "description": {},
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "The page number for paginated list responses."
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "The number of records to return per page (max 100)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ece3baf3-d81a-48ab-9cc0-52710bc6274f",
+              "name": "A paginated list of payments.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1535,\n    \"object\": \"string\",\n    \"customer\": 7654,\n    \"currency\": \"string\",\n    \"method\": \"check\",\n    \"status\": \"string\",\n    \"amount\": 5587.190890450561,\n    \"balance\": 1041.420477136442,\n    \"date\": 6738,\n    \"reference\": \"string\",\n    \"notes\": \"string\",\n    \"applied_to\": [\n      {\n        \"type\": \"estimate\",\n        \"invoice\": 559,\n        \"amount\": 7150.142165871564,\n        \"document_type\": \"string\"\n      },\n      {\n        \"type\": \"invoice\",\n        \"invoice\": 9493,\n        \"amount\": 1466.6205557127255,\n        \"document_type\": \"string\"\n      }\n    ],\n    \"metadata\": {},\n    \"created_at\": 9517,\n    \"updated_at\": 3416\n  },\n  {\n    \"id\": 2282,\n    \"object\": \"string\",\n    \"customer\": 9838,\n    \"currency\": \"string\",\n    \"method\": \"paypal\",\n    \"status\": \"string\",\n    \"amount\": 5878.042399834583,\n    \"balance\": 2774.3794882418806,\n    \"date\": 7947,\n    \"reference\": \"string\",\n    \"notes\": \"string\",\n    \"applied_to\": [\n      {\n        \"type\": \"credit_note\",\n        \"invoice\": 877,\n        \"amount\": 1822.8458000951198,\n        \"document_type\": \"string\"\n      },\n      {\n        \"type\": \"convenience_fee\",\n        \"invoice\": 8727,\n        \"amount\": 9311.36985208128,\n        \"document_type\": \"string\"\n      }\n    ],\n    \"metadata\": {},\n    \"created_at\": 1863,\n    \"updated_at\": 893\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dc1daf6-1ef3-4db0-97eb-e0d638126710",
+          "name": "Record a new payment.",
+          "request": {
+            "name": "Record a new payment.",
+            "description": {},
+            "url": {
+              "path": [
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d06144ab-f7d8-4959-afbb-805551722938",
+              "name": "The created payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59a7fe02-cf42-4832-8511-c0324745c6b0",
+          "name": "Retrieve a payment.",
+          "request": {
+            "name": "Retrieve a payment.",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40c1c85b-0bbb-4c08-91c1-923469a4e849",
+              "name": "The requested payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf8b9eaa-a244-4286-8668-832298358d9c",
+          "name": "Update a payment.",
+          "request": {
+            "name": "Update a payment.",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52a2c57c-da91-4728-8720-cd2af54ac54a",
+              "name": "The updated payment.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"<integer>\",\n  \"object\": \"<string>\",\n  \"customer\": \"<integer>\",\n  \"currency\": \"<string>\",\n  \"method\": \"<string>\",\n  \"status\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"balance\": \"<number>\",\n  \"date\": \"<integer>\",\n  \"reference\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"applied_to\": [\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"invoice\": \"<integer>\",\n      \"amount\": \"<number>\",\n      \"document_type\": \"<string>\"\n    }\n  ],\n  \"metadata\": \"<object>\",\n  \"created_at\": \"<integer>\",\n  \"updated_at\": \"<integer>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ab6df9e-f330-4ad6-bd81-28d22dd0ed74",
+          "name": "Delete a payment.",
+          "request": {
+            "name": "Delete a payment.",
+            "description": {},
+            "url": {
+              "path": [
+                "payments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) The integer identifier of the object."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1063290-2568-47d4-80b1-a3e4d47f385c",
+              "name": "The payment was deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) The integer identifier of the object."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.invoiced.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9eaf2bec-258e-448b-bef2-90029196e761",
+    "name": "Invoiced Credit Notes Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.\n\nContact Support:\n Name: Invoiced Developers\n Email: developers@invoiced.com",
+      "type": "text/plain"
+    }
+  }
+}
