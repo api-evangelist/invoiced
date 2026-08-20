@@ -26,6 +26,12 @@ tags:
 - Billing
 - Invoicing
 - Payments
+- Subscription
+tags_raw:
+- Accounts Receivable
+- Billing
+- Invoicing
+- Payments
 - Subscriptions
 created: '2026-06-21'
 modified: '2026-06-21'
@@ -175,6 +181,8 @@ apis:
   humanURL: https://developer.invoiced.com/api/customers
   baseURL: https://api.invoiced.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -267,6 +275,8 @@ apis:
   humanURL: https://developer.invoiced.com/api/customers
   baseURL: https://api.invoiced.com
   tags:
+  - Item
+  tags_raw:
   - Items
   properties:
   - type: OpenAPI
@@ -405,6 +415,8 @@ apis:
   humanURL: https://developer.invoiced.com/api/customers
   baseURL: https://api.invoiced.com
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
