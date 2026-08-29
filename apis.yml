@@ -7,6 +7,18 @@ description: Invoiced is an accounts-receivable and billing automation platform 
   estimates, credit notes, payments, subscriptions, plans, items, events, and webhooks
   for automating A/R, payment collection, and subscription billing. Invoiced was
   acquired by Flywire in 2024.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
