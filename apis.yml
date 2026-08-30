@@ -470,6 +470,11 @@ apis:
   - type: APIReference
     url: https://developer.invoiced.com/api/events
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/flywire/
+  name: Flywire
+  x-relationship: acquired
+  x-evidence: "Invoiced was acquired by Flywire in 2024."
 - type: AgenticAccess
   url: agentic-access/invoiced-agentic-access.yml
 - type: DomainSecurity
