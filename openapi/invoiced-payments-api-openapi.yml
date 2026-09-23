@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Payments API
+  title: Invoiced Payments API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listPayments
       tags:
       - Payments
-      summary: List all payments.
+      summary: List all payments
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -41,7 +41,7 @@ paths:
       operationId: createPayment
       tags:
       - Payments
-      summary: Record a new payment.
+      summary: Record a new payment
       requestBody:
         required: true
         content:
@@ -62,7 +62,7 @@ paths:
       operationId: getPayment
       tags:
       - Payments
-      summary: Retrieve a payment.
+      summary: Retrieve a payment
       responses:
         '200':
           description: The requested payment.
@@ -74,7 +74,7 @@ paths:
       operationId: updatePayment
       tags:
       - Payments
-      summary: Update a payment.
+      summary: Update a payment
       requestBody:
         required: true
         content:
@@ -92,25 +92,12 @@ paths:
       operationId: deletePayment
       tags:
       - Payments
-      summary: Delete a payment.
+      summary: Delete a payment
       responses:
         '204':
           description: The payment was deleted.
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
     PerPage:
       name: per_page
       in: query
@@ -125,23 +112,20 @@ components:
       description: The integer identifier of the object.
       schema:
         type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
-    PaymentApplication:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - invoice
-          - credit_note
-          - estimate
-          - convenience_fee
-        invoice:
-          type: integer
-        amount:
-          type: number
-        document_type:
-          type: string
     Payment:
       type: object
       properties:
@@ -185,6 +169,22 @@ components:
           type: integer
         updated_at:
           type: integer
+    PaymentApplication:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - invoice
+          - credit_note
+          - estimate
+          - convenience_fee
+        invoice:
+          type: integer
+        amount:
+          type: number
+        document_type:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

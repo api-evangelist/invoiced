@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Subscriptions API
+  title: Invoiced Subscriptions API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listSubscriptions
       tags:
       - Subscriptions
-      summary: List all subscriptions.
+      summary: List all subscriptions
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -41,7 +41,7 @@ paths:
       operationId: createSubscription
       tags:
       - Subscriptions
-      summary: Create a new subscription.
+      summary: Create a new subscription
       requestBody:
         required: true
         content:
@@ -60,7 +60,7 @@ paths:
       operationId: previewSubscription
       tags:
       - Subscriptions
-      summary: Preview a subscription without persisting any data.
+      summary: Preview a subscription without persisting any data
       requestBody:
         required: true
         content:
@@ -81,7 +81,7 @@ paths:
       operationId: getSubscription
       tags:
       - Subscriptions
-      summary: Retrieve a subscription.
+      summary: Retrieve a subscription
       responses:
         '200':
           description: The requested subscription.
@@ -93,7 +93,7 @@ paths:
       operationId: updateSubscription
       tags:
       - Subscriptions
-      summary: Update a subscription.
+      summary: Update a subscription
       requestBody:
         required: true
         content:
@@ -111,19 +111,12 @@ paths:
       operationId: cancelSubscription
       tags:
       - Subscriptions
-      summary: Cancel a subscription.
+      summary: Cancel a subscription
       responses:
         '204':
           description: The subscription was canceled.
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
     PerPage:
       name: per_page
       in: query
@@ -144,6 +137,13 @@ components:
       description: Filter results by object attributes.
       schema:
         type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
     Subscription:
       type: object
@@ -173,8 +173,9 @@ components:
         quantity:
           type: integer
         cycles:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         addons:
           type: array
           items:

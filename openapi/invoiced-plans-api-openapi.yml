@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Plans API
+  title: Invoiced Plans API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listPlans
       tags:
       - Plans
-      summary: List all plans.
+      summary: List all plans
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -40,7 +40,7 @@ paths:
       operationId: createPlan
       tags:
       - Plans
-      summary: Create a new plan.
+      summary: Create a new plan
       requestBody:
         required: true
         content:
@@ -61,7 +61,7 @@ paths:
       operationId: getPlan
       tags:
       - Plans
-      summary: Retrieve a plan.
+      summary: Retrieve a plan
       responses:
         '200':
           description: The requested plan.
@@ -73,7 +73,7 @@ paths:
       operationId: updatePlan
       tags:
       - Plans
-      summary: Update a plan.
+      summary: Update a plan
       requestBody:
         required: true
         content:
@@ -91,19 +91,12 @@ paths:
       operationId: deletePlan
       tags:
       - Plans
-      summary: Delete a plan.
+      summary: Delete a plan
       responses:
         '204':
           description: The plan was deleted.
 components:
   parameters:
-    StringId:
-      name: id
-      in: path
-      required: true
-      description: The identifier of the object.
-      schema:
-        type: string
     PerPage:
       name: per_page
       in: query
@@ -118,6 +111,13 @@ components:
       schema:
         type: integer
         default: 1
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
   schemas:
     Plan:
       type: object

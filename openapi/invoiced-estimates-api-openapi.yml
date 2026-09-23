@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Estimates API
+  title: Invoiced Estimates API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listEstimates
       tags:
       - Estimates
-      summary: List all estimates.
+      summary: List all estimates
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -41,7 +41,7 @@ paths:
       operationId: createEstimate
       tags:
       - Estimates
-      summary: Create a new estimate.
+      summary: Create a new estimate
       requestBody:
         required: true
         content:
@@ -62,7 +62,7 @@ paths:
       operationId: getEstimate
       tags:
       - Estimates
-      summary: Retrieve an estimate.
+      summary: Retrieve an estimate
       responses:
         '200':
           description: The requested estimate.
@@ -74,7 +74,7 @@ paths:
       operationId: updateEstimate
       tags:
       - Estimates
-      summary: Update an estimate.
+      summary: Update an estimate
       requestBody:
         required: true
         content:
@@ -92,7 +92,7 @@ paths:
       operationId: deleteEstimate
       tags:
       - Estimates
-      summary: Delete an estimate.
+      summary: Delete an estimate
       responses:
         '204':
           description: The estimate was deleted.
@@ -103,7 +103,7 @@ paths:
       operationId: convertEstimateToInvoice
       tags:
       - Estimates
-      summary: Convert an approved estimate into an invoice.
+      summary: Convert an approved estimate into an invoice
       responses:
         '201':
           description: The newly created invoice.
@@ -112,6 +112,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/Invoice'
 components:
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
     LineItem:
       type: object
@@ -136,59 +164,6 @@ components:
           type: boolean
         metadata:
           type: object
-    Estimate:
-      type: object
-      properties:
-        id:
-          type: integer
-        object:
-          type: string
-        customer:
-          type: integer
-        number:
-          type: string
-        name:
-          type: string
-        currency:
-          type: string
-        status:
-          type: string
-          enum:
-          - draft
-          - not_sent
-          - sent
-          - approved
-          - invoiced
-          - declined
-          - voided
-        invoice:
-          type: integer
-        subtotal:
-          type: number
-        total:
-          type: number
-        date:
-          type: integer
-        expiration_date:
-          type: integer
-        payment_terms:
-          type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineItem'
-        notes:
-          type: string
-        url:
-          type: string
-        pdf_url:
-          type: string
-        metadata:
-          type: object
-        created_at:
-          type: integer
-        updated_at:
-          type: integer
     Invoice:
       type: object
       properties:
@@ -265,34 +240,59 @@ components:
           type: integer
         updated_at:
           type: integer
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
+    Estimate:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        number:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - draft
+          - not_sent
+          - sent
+          - approved
+          - invoiced
+          - declined
+          - voided
+        invoice:
+          type: integer
+        subtotal:
+          type: number
+        total:
+          type: number
+        date:
+          type: integer
+        expiration_date:
+          type: integer
+        payment_terms:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        url:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
   securitySchemes:
     basicAuth:
       type: http

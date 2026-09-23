@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Invoiced Credit Notes API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
@@ -23,7 +23,7 @@ paths:
       operationId: listCreditNotes
       tags:
       - Credit Notes
-      summary: List all credit notes.
+      summary: List all credit notes
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -41,7 +41,7 @@ paths:
       operationId: createCreditNote
       tags:
       - Credit Notes
-      summary: Create a new credit note.
+      summary: Create a new credit note
       requestBody:
         required: true
         content:
@@ -62,7 +62,7 @@ paths:
       operationId: getCreditNote
       tags:
       - Credit Notes
-      summary: Retrieve a credit note.
+      summary: Retrieve a credit note
       responses:
         '200':
           description: The requested credit note.
@@ -74,7 +74,7 @@ paths:
       operationId: updateCreditNote
       tags:
       - Credit Notes
-      summary: Update a credit note.
+      summary: Update a credit note
       requestBody:
         required: true
         content:
@@ -92,35 +92,40 @@ paths:
       operationId: deleteCreditNote
       tags:
       - Credit Notes
-      summary: Delete a credit note.
+      summary: Delete a credit note
       responses:
         '204':
           description: The credit note was deleted.
 components:
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
-    LineItem:
-      type: object
-      properties:
-        catalog_item:
-          type: string
-        type:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        quantity:
-          type: number
-        unit_cost:
-          type: number
-        amount:
-          type: number
-        discountable:
-          type: boolean
-        taxable:
-          type: boolean
-        metadata:
-          type: object
     CreditNote:
       type: object
       properties:
@@ -170,34 +175,29 @@ components:
           type: integer
         updated_at:
           type: integer
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
   securitySchemes:
     basicAuth:
       type: http

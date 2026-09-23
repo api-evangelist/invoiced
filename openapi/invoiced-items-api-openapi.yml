@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Items API
+  title: Invoiced Items API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listItems
       tags:
       - Items
-      summary: List all catalog items.
+      summary: List all catalog items
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -40,7 +40,7 @@ paths:
       operationId: createItem
       tags:
       - Items
-      summary: Create a new catalog item.
+      summary: Create a new catalog item
       requestBody:
         required: true
         content:
@@ -61,7 +61,7 @@ paths:
       operationId: getItem
       tags:
       - Items
-      summary: Retrieve a catalog item.
+      summary: Retrieve a catalog item
       responses:
         '200':
           description: The requested item.
@@ -73,7 +73,7 @@ paths:
       operationId: updateItem
       tags:
       - Items
-      summary: Update a catalog item.
+      summary: Update a catalog item
       requestBody:
         required: true
         content:
@@ -91,33 +91,11 @@ paths:
       operationId: deleteItem
       tags:
       - Items
-      summary: Delete a catalog item.
+      summary: Delete a catalog item
       responses:
         '204':
           description: The item was deleted.
 components:
-  parameters:
-    StringId:
-      name: id
-      in: path
-      required: true
-      description: The identifier of the object.
-      schema:
-        type: string
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
   schemas:
     Item:
       type: object
@@ -155,6 +133,28 @@ components:
           type: integer
         updated_at:
           type: integer
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
   securitySchemes:
     basicAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Events API
+  title: Invoiced Events API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listEvents
       tags:
       - Events
-      summary: List account events.
+      summary: List account events
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -48,7 +48,7 @@ paths:
       operationId: getEvent
       tags:
       - Events
-      summary: Retrieve a specific event.
+      summary: Retrieve a specific event
       responses:
         '200':
           description: The requested event.
@@ -57,28 +57,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Event'
 components:
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
   schemas:
     Event:
       type: object
@@ -101,6 +79,28 @@ components:
               type: object
         user:
           type: integer
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
   securitySchemes:
     basicAuth:
       type: http

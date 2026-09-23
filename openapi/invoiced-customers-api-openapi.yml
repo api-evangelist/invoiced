@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Customers API
+  title: Invoiced Customers API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listCustomers
       tags:
       - Customers
-      summary: List all customers.
+      summary: List all customers
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -41,7 +41,7 @@ paths:
       operationId: createCustomer
       tags:
       - Customers
-      summary: Create a new customer.
+      summary: Create a new customer
       requestBody:
         required: true
         content:
@@ -62,7 +62,7 @@ paths:
       operationId: getCustomer
       tags:
       - Customers
-      summary: Retrieve a customer.
+      summary: Retrieve a customer
       responses:
         '200':
           description: The requested customer.
@@ -74,7 +74,7 @@ paths:
       operationId: updateCustomer
       tags:
       - Customers
-      summary: Update a customer.
+      summary: Update a customer
       requestBody:
         required: true
         content:
@@ -92,7 +92,7 @@ paths:
       operationId: deleteCustomer
       tags:
       - Customers
-      summary: Delete a customer.
+      summary: Delete a customer
       responses:
         '204':
           description: The customer was deleted.
@@ -103,7 +103,7 @@ paths:
       operationId: getCustomerBalance
       tags:
       - Customers
-      summary: Retrieve a customer's credit balance and amount outstanding.
+      summary: Retrieve a customer's credit balance and amount outstanding
       responses:
         '200':
           description: The customer balance details.
@@ -113,13 +113,6 @@ paths:
                 $ref: '#/components/schemas/CustomerBalance'
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
     PerPage:
       name: per_page
       in: query
@@ -140,20 +133,14 @@ components:
       description: Filter results by object attributes.
       schema:
         type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
-    CustomerBalance:
-      type: object
-      properties:
-        available_credits:
-          type: number
-        history:
-          type: array
-          items:
-            type: object
-        past_due:
-          type: boolean
-        total_outstanding:
-          type: number
     Customer:
       type: object
       required:
@@ -206,6 +193,19 @@ components:
           type: integer
         updated_at:
           type: integer
+    CustomerBalance:
+      type: object
+      properties:
+        available_credits:
+          type: number
+        history:
+          type: array
+          items:
+            type: object
+        past_due:
+          type: boolean
+        total_outstanding:
+          type: number
   securitySchemes:
     basicAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Invoiced Credit Notes Invoices API
+  title: Invoiced Invoices API
   description: REST API for the Invoiced accounts-receivable and billing automation platform. Manage customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, and events/webhooks. All requests must use HTTPS. Responses are JSON and dates are returned as UNIX timestamps.
   termsOfService: https://www.invoiced.com/legal/terms-of-service
   contact:
@@ -23,7 +23,7 @@ paths:
       operationId: listInvoices
       tags:
       - Invoices
-      summary: List all invoices.
+      summary: List all invoices
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -41,7 +41,7 @@ paths:
       operationId: createInvoice
       tags:
       - Invoices
-      summary: Create a new invoice.
+      summary: Create a new invoice
       requestBody:
         required: true
         content:
@@ -62,7 +62,7 @@ paths:
       operationId: getInvoice
       tags:
       - Invoices
-      summary: Retrieve an invoice.
+      summary: Retrieve an invoice
       responses:
         '200':
           description: The requested invoice.
@@ -74,7 +74,7 @@ paths:
       operationId: updateInvoice
       tags:
       - Invoices
-      summary: Update an invoice.
+      summary: Update an invoice
       requestBody:
         required: true
         content:
@@ -92,7 +92,7 @@ paths:
       operationId: deleteInvoice
       tags:
       - Invoices
-      summary: Delete an invoice.
+      summary: Delete an invoice
       responses:
         '204':
           description: The invoice was deleted.
@@ -103,7 +103,7 @@ paths:
       operationId: sendInvoiceEmail
       tags:
       - Invoices
-      summary: Send an invoice to the customer by email.
+      summary: Send an invoice to the customer by email
       responses:
         '201':
           description: The emails that were sent.
@@ -114,7 +114,7 @@ paths:
       operationId: payInvoice
       tags:
       - Invoices
-      summary: Trigger automatic payment collection on an invoice.
+      summary: Trigger automatic payment collection on an invoice
       responses:
         '200':
           description: The invoice after a payment attempt.
@@ -129,7 +129,7 @@ paths:
       operationId: voidInvoice
       tags:
       - Invoices
-      summary: Void an invoice.
+      summary: Void an invoice
       responses:
         '200':
           description: The voided invoice.
@@ -138,6 +138,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/Invoice'
 components:
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
     LineItem:
       type: object
@@ -238,34 +266,6 @@ components:
           type: integer
         updated_at:
           type: integer
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
   securitySchemes:
     basicAuth:
       type: http
