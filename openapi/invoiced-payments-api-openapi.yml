@@ -98,13 +98,12 @@ paths:
           description: The payment was deleted.
 components:
   parameters:
-    PerPage:
-      name: per_page
+    Filter:
+      name: filter
       in: query
-      description: The number of records to return per page (max 100).
+      description: Filter results by object attributes.
       schema:
-        type: integer
-        default: 25
+        type: object
     Id:
       name: id
       in: path
@@ -112,12 +111,13 @@ components:
       description: The integer identifier of the object.
       schema:
         type: integer
-    Filter:
-      name: filter
+    PerPage:
+      name: per_page
       in: query
-      description: Filter results by object attributes.
+      description: The number of records to return per page (max 100).
       schema:
-        type: object
+        type: integer
+        default: 25
     Page:
       name: page
       in: query

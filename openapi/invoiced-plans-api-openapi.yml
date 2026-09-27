@@ -104,13 +104,6 @@ components:
       schema:
         type: integer
         default: 25
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
     StringId:
       name: id
       in: path
@@ -118,6 +111,13 @@ components:
       description: The identifier of the object.
       schema:
         type: string
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
     Plan:
       type: object

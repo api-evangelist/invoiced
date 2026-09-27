@@ -96,6 +96,28 @@ paths:
         '204':
           description: The item was deleted.
 components:
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
     Item:
       type: object
@@ -133,28 +155,6 @@ components:
           type: integer
         updated_at:
           type: integer
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
-    StringId:
-      name: id
-      in: path
-      required: true
-      description: The identifier of the object.
-      schema:
-        type: string
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
   securitySchemes:
     basicAuth:
       type: http
