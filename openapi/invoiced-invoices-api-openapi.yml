@@ -139,29 +139,6 @@ paths:
                 $ref: '#/components/schemas/Invoice'
 components:
   schemas:
-    LineItem:
-      type: object
-      properties:
-        catalog_item:
-          type: string
-        type:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        quantity:
-          type: number
-        unit_cost:
-          type: number
-        amount:
-          type: number
-        discountable:
-          type: boolean
-        taxable:
-          type: boolean
-        metadata:
-          type: object
     Invoice:
       type: object
       properties:
@@ -238,20 +215,30 @@ components:
           type: integer
         updated_at:
           type: integer
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
   parameters:
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
     PerPage:
       name: per_page
       in: query
@@ -259,6 +246,19 @@ components:
       schema:
         type: integer
         default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
     Page:
       name: page
       in: query

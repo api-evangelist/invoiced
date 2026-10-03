@@ -112,48 +112,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CustomerBalance'
 components:
-  parameters:
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
   schemas:
-    CustomerBalance:
-      type: object
-      properties:
-        available_credits:
-          type: number
-        history:
-          type: array
-          items:
-            type: object
-        past_due:
-          type: boolean
-        total_outstanding:
-          type: number
     Customer:
       type: object
       required:
@@ -206,6 +165,47 @@ components:
           type: integer
         updated_at:
           type: integer
+    CustomerBalance:
+      type: object
+      properties:
+        available_credits:
+          type: number
+        history:
+          type: array
+          items:
+            type: object
+        past_due:
+          type: boolean
+        total_outstanding:
+          type: number
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     basicAuth:
       type: http

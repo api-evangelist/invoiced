@@ -171,19 +171,6 @@ components:
         metadata:
           type: object
   parameters:
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
     PerPage:
       name: per_page
       in: query
@@ -191,6 +178,19 @@ components:
       schema:
         type: integer
         default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
     Page:
       name: page
       in: query

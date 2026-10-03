@@ -98,19 +98,6 @@ paths:
           description: The payment was deleted.
 components:
   parameters:
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
     PerPage:
       name: per_page
       in: query
@@ -118,6 +105,19 @@ components:
       schema:
         type: integer
         default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
     Page:
       name: page
       in: query
@@ -126,6 +126,22 @@ components:
         type: integer
         default: 1
   schemas:
+    PaymentApplication:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - invoice
+          - credit_note
+          - estimate
+          - convenience_fee
+        invoice:
+          type: integer
+        amount:
+          type: number
+        document_type:
+          type: string
     Payment:
       type: object
       properties:
@@ -169,22 +185,6 @@ components:
           type: integer
         updated_at:
           type: integer
-    PaymentApplication:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - invoice
-          - credit_note
-          - estimate
-          - convenience_fee
-        invoice:
-          type: integer
-        amount:
-          type: number
-        document_type:
-          type: string
   securitySchemes:
     basicAuth:
       type: http
