@@ -97,34 +97,6 @@ paths:
         '204':
           description: The payment was deleted.
 components:
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
   schemas:
     PaymentApplication:
       type: object
@@ -185,6 +157,34 @@ components:
           type: integer
         updated_at:
           type: integer
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
   securitySchemes:
     basicAuth:
       type: http

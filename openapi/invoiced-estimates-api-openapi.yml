@@ -112,7 +112,111 @@ paths:
               schema:
                 $ref: '#/components/schemas/Invoice'
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
+    Filter:
+      name: filter
+      in: query
+      description: Filter results by object attributes.
+      schema:
+        type: object
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
   schemas:
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
+    Estimate:
+      type: object
+      properties:
+        id:
+          type: integer
+        object:
+          type: string
+        customer:
+          type: integer
+        number:
+          type: string
+        name:
+          type: string
+        currency:
+          type: string
+        status:
+          type: string
+          enum:
+          - draft
+          - not_sent
+          - sent
+          - approved
+          - invoiced
+          - declined
+          - voided
+        invoice:
+          type: integer
+        subtotal:
+          type: number
+        total:
+          type: number
+        date:
+          type: integer
+        expiration_date:
+          type: integer
+        payment_terms:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineItem'
+        notes:
+          type: string
+        url:
+          type: string
+        pdf_url:
+          type: string
+        metadata:
+          type: object
+        created_at:
+          type: integer
+        updated_at:
+          type: integer
     Invoice:
       type: object
       properties:
@@ -189,110 +293,6 @@ components:
           type: integer
         updated_at:
           type: integer
-    Estimate:
-      type: object
-      properties:
-        id:
-          type: integer
-        object:
-          type: string
-        customer:
-          type: integer
-        number:
-          type: string
-        name:
-          type: string
-        currency:
-          type: string
-        status:
-          type: string
-          enum:
-          - draft
-          - not_sent
-          - sent
-          - approved
-          - invoiced
-          - declined
-          - voided
-        invoice:
-          type: integer
-        subtotal:
-          type: number
-        total:
-          type: number
-        date:
-          type: integer
-        expiration_date:
-          type: integer
-        payment_terms:
-          type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineItem'
-        notes:
-          type: string
-        url:
-          type: string
-        pdf_url:
-          type: string
-        metadata:
-          type: object
-        created_at:
-          type: integer
-        updated_at:
-          type: integer
-    LineItem:
-      type: object
-      properties:
-        catalog_item:
-          type: string
-        type:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        quantity:
-          type: number
-        unit_cost:
-          type: number
-        amount:
-          type: number
-        discountable:
-          type: boolean
-        taxable:
-          type: boolean
-        metadata:
-          type: object
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
-    Filter:
-      name: filter
-      in: query
-      description: Filter results by object attributes.
-      schema:
-        type: object
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
   securitySchemes:
     basicAuth:
       type: http

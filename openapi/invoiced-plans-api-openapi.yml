@@ -96,28 +96,6 @@ paths:
         '204':
           description: The plan was deleted.
 components:
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: The number of records to return per page (max 100).
-      schema:
-        type: integer
-        default: 25
-    StringId:
-      name: id
-      in: path
-      required: true
-      description: The identifier of the object.
-      schema:
-        type: string
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
   schemas:
     Plan:
       type: object
@@ -160,6 +138,28 @@ components:
           type: integer
         updated_at:
           type: integer
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: The number of records to return per page (max 100).
+      schema:
+        type: integer
+        default: 25
+    StringId:
+      name: id
+      in: path
+      required: true
+      description: The identifier of the object.
+      schema:
+        type: string
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     basicAuth:
       type: http
