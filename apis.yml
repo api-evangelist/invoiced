@@ -471,6 +471,9 @@ apis:
   - type: APIReference
     url: https://developer.invoiced.com/api/events
 common:
+- type: CapabilityMap
+  url: capabilities/invoiced-capability-edges.yml
+  name: Invoiced Business Capability Map
 - type: ParentCompany
   url: https://apis.io/providers/flywire/
   name: Flywire
