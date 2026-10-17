@@ -113,6 +113,13 @@ paths:
                 $ref: '#/components/schemas/Invoice'
 components:
   parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
     Page:
       name: page
       in: query
@@ -133,37 +140,7 @@ components:
       schema:
         type: integer
         default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
   schemas:
-    LineItem:
-      type: object
-      properties:
-        catalog_item:
-          type: string
-        type:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        quantity:
-          type: number
-        unit_cost:
-          type: number
-        amount:
-          type: number
-        discountable:
-          type: boolean
-        taxable:
-          type: boolean
-        metadata:
-          type: object
     Estimate:
       type: object
       properties:
@@ -293,6 +270,29 @@ components:
           type: integer
         updated_at:
           type: integer
+    LineItem:
+      type: object
+      properties:
+        catalog_item:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        quantity:
+          type: number
+        unit_cost:
+          type: number
+        amount:
+          type: number
+        discountable:
+          type: boolean
+        taxable:
+          type: boolean
+        metadata:
+          type: object
   securitySchemes:
     basicAuth:
       type: http

@@ -97,13 +97,6 @@ paths:
           description: The item was deleted.
 components:
   parameters:
-    Page:
-      name: page
-      in: query
-      description: The page number for paginated list responses.
-      schema:
-        type: integer
-        default: 1
     StringId:
       name: id
       in: path
@@ -118,6 +111,13 @@ components:
       schema:
         type: integer
         default: 25
+    Page:
+      name: page
+      in: query
+      description: The page number for paginated list responses.
+      schema:
+        type: integer
+        default: 1
   schemas:
     Item:
       type: object

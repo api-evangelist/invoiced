@@ -98,6 +98,13 @@ paths:
           description: The credit note was deleted.
 components:
   parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The integer identifier of the object.
+      schema:
+        type: integer
     Page:
       name: page
       in: query
@@ -118,13 +125,6 @@ components:
       schema:
         type: integer
         default: 25
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The integer identifier of the object.
-      schema:
-        type: integer
   schemas:
     CreditNote:
       type: object
