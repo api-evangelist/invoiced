@@ -153,8 +153,43 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: data integration
+- partner_name: Google Workspace (own)
+  partner: google-workspace
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://workspace.google.com/marketplace/app/invoiced/980661723912
+  mirror_of: google-workspace/integrations/google-workspace-integration-edges.yml
+  apps:
+  - Invoiced
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Google Workspace app
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A57G69WQ7-invoiced
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Invoiced
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
 method: searched
 checked:
+- google-workspace/integrations/google-workspace-integration-edges.yml
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
 - https://connectors.airbyte.com/files/registries/v0/oss_registry.json
 - https://fivetran.com/docs-sitemap.xml
@@ -163,6 +198,7 @@ checked:
 - https://github.com/meltano/hub
 - https://zapier.com/api/v4/apps/
 - meltano/integrations/meltano-integration-edges.yml
+- slack/integrations/slack-integration-edges.yml
 source:
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://zapier.com/api/v4/apps/
