@@ -1,4 +1,4 @@
-# Invoiced (invoiced)
+# Invoiced
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,202 +66,132 @@
 
 Invoiced is an accounts-receivable and billing automation platform that helps B2B finance teams get paid faster. Its REST API exposes customers, invoices, estimates, credit notes, payments, subscriptions, plans, items, events, and webhooks for automating A/R, payment collection, and subscription billing. Invoiced was acquired by Flywire in 2024.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/invoiced/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/invoiced/refs/heads/main/apis.yml)
+**Areas:** Accounts Receivable · Billing · Invoicing · Payments · Subscription
 
-## Tags
+## Invoiced on APIs.io
 
-- Accounts Receivable
-- Billing
-- Invoicing
-- Payments
-- Subscriptions
+Everything profiled for Invoiced is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/invoiced/](https://apis.io/providers/invoiced/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (9)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Invoiced Credit Notes API](https://apis.io/apis/invoiced/invoiced-credit-notes-api/) — The Credit Notes API from Invoiced — 2 operation(s) for credit notes.
+- [Invoiced Customers API](https://apis.io/apis/invoiced/invoiced-customers-api/) — The Customers API from Invoiced — 3 operation(s) for customers.
+- [Invoiced Estimates API](https://apis.io/apis/invoiced/invoiced-estimates-api/) — The Estimates API from Invoiced — 3 operation(s) for estimates.
+- [Invoiced Events API](https://apis.io/apis/invoiced/invoiced-events-api/) — The Events API from Invoiced — 2 operation(s) for events.
+- [Invoiced Invoices API](https://apis.io/apis/invoiced/invoiced-invoices-api/) — The Invoices API from Invoiced — 5 operation(s) for invoices.
+- [Invoiced Items API](https://apis.io/apis/invoiced/invoiced-items-api/) — The Items API from Invoiced — 2 operation(s) for items.
+- [Invoiced Payments API](https://apis.io/apis/invoiced/invoiced-payments-api/) — The Payments API from Invoiced — 2 operation(s) for payments.
+- [Invoiced Plans API](https://apis.io/apis/invoiced/invoiced-plans-api/) — The Plans API from Invoiced — 2 operation(s) for plans.
+- [Invoiced Subscriptions API](https://apis.io/apis/invoiced/invoiced-subscriptions-api/) — The Subscriptions API from Invoiced — 3 operation(s) for subscriptions.
 
-## APIs
+### Published properties
 
-### Invoiced Customers API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create, retrieve, update, list, and delete customers; pull customer credit balances and statements; and send statements via email, SMS, or mail.
+#### Agentic access (1)
 
-- **Human URL:** [https://developer.invoiced.com/api/customers](https://developer.invoiced.com/api/customers)
-- **Base URL:** `https://api.invoiced.com`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Invoiced Agentic Access](https://apis.io/agentic-access/invoiced/invoiced-agentic-access/)
 
-- Customers
-- Accounts Receivable
-- Contacts
+#### Collections (10)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.invoiced.com/api/customers)
-- [API Reference](https://developer.invoiced.com/api/customers)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Invoiced API](https://apis.io/collections/invoiced/open-invoiced/)
+- [Invoiced Credit Notes API](https://apis.io/collections/invoiced/open-invoiced-credit-notes-api/)
+- [Invoiced Credit Notes Customers API](https://apis.io/collections/invoiced/open-invoiced-customers-api/)
+- [Invoiced Credit Notes Estimates API](https://apis.io/collections/invoiced/open-invoiced-estimates-api/)
+- [Invoiced Credit Notes Events API](https://apis.io/collections/invoiced/open-invoiced-events-api/)
+- [Invoiced Credit Notes Invoices API](https://apis.io/collections/invoiced/open-invoiced-invoices-api/)
+- [Invoiced Credit Notes Items API](https://apis.io/collections/invoiced/open-invoiced-items-api/)
+- [Invoiced Credit Notes Payments API](https://apis.io/collections/invoiced/open-invoiced-payments-api/)
+- [Invoiced Credit Notes Plans API](https://apis.io/collections/invoiced/open-invoiced-plans-api/)
+- [Invoiced Credit Notes Subscriptions API](https://apis.io/collections/invoiced/open-invoiced-subscriptions-api/)
 
-### Invoiced Invoices API
+#### Security (2)
 
-Manage invoices end-to-end - create, update, void, and delete invoices; send by email, text message, or mail; trigger payment collection; and list invoice attachments.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://developer.invoiced.com/api/invoices](https://developer.invoiced.com/api/invoices)
-- **Base URL:** `https://api.invoiced.com`
+- [Invoiced Authentication](https://apis.io/security/invoiced/invoiced-authentication/)
+- [Invoiced Domain Security](https://apis.io/security/invoiced/invoiced-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Invoices
-- Billing
-- Accounts Receivable
+Published plans, tiers and prices.
 
-#### Properties
+- [Invoiced Plans Pricing](https://apis.io/plans/invoiced/invoiced-plans-pricing/)
 
-- [Documentation](https://developer.invoiced.com/api/invoices)
-- [API Reference](https://developer.invoiced.com/api/invoices)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Invoiced Estimates API
+Published request limits.
 
-Create and manage estimates (quotes), send them to customers, convert approved estimates into invoices, and void or delete estimates.
+- [Invoiced Rate Limits](https://apis.io/rate-limits/invoiced/invoiced-rate-limits/)
 
-- **Human URL:** [https://developer.invoiced.com/api/estimates](https://developer.invoiced.com/api/estimates)
-- **Base URL:** `https://api.invoiced.com`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Estimates
-- Quotes
-- Billing
+- [Invoiced Finops](https://apis.io/finops/invoiced/invoiced-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developer.invoiced.com/api/estimates)
-- [API Reference](https://developer.invoiced.com/api/estimates)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Invoiced Credit Notes API
-
-Issue credit notes that represent balances owed back to customers, send them, void them, and manage their line items and attachments.
-
-- **Human URL:** [https://developer.invoiced.com/api/credit-notes](https://developer.invoiced.com/api/credit-notes)
-- **Base URL:** `https://api.invoiced.com`
-
-#### Tags
-
-- Credit Notes
-- Refunds
-- Accounts Receivable
-
-#### Properties
-
-- [Documentation](https://developer.invoiced.com/api/credit-notes)
-- [API Reference](https://developer.invoiced.com/api/credit-notes)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Invoiced Payments API
-
-Record and manage payments and their applications across invoices, supporting multiple applications per payment for cash application workflows.
-
-- **Human URL:** [https://developer.invoiced.com/api/payments](https://developer.invoiced.com/api/payments)
-- **Base URL:** `https://api.invoiced.com`
-
-#### Tags
-
-- Payments
-- Transactions
-- Cash Application
-
-#### Properties
-
-- [Documentation](https://developer.invoiced.com/api/payments)
-- [API Reference](https://developer.invoiced.com/api/payments)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Invoiced Subscriptions & Plans API
-
-Create, preview, update, list, and cancel subscriptions backed by reusable plans, with MRR, billing-cycle, add-on, and metered-billing support.
-
-- **Human URL:** [https://developer.invoiced.com/api/subscriptions](https://developer.invoiced.com/api/subscriptions)
-- **Base URL:** `https://api.invoiced.com`
-
-#### Tags
-
-- Subscriptions
-- Plans
-- Recurring Billing
-
-#### Properties
-
-- [Documentation](https://developer.invoiced.com/api/subscriptions)
-- [API Reference](https://developer.invoiced.com/api/subscriptions)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Invoiced Items API
-
-Maintain a catalog of reusable items (products and services) used as line items on invoices, estimates, and credit notes.
-
-- **Human URL:** [https://developer.invoiced.com/api/items](https://developer.invoiced.com/api/items)
-- **Base URL:** `https://api.invoiced.com`
-
-#### Tags
-
-- Items
-- Catalog
-- Line Items
-
-#### Properties
-
-- [Documentation](https://developer.invoiced.com/api/items)
-- [API Reference](https://developer.invoiced.com/api/items)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Invoiced Events & Webhooks API
-
-Retrieve and list account events (object.action records such as invoice.paid and customer.created) that drive HTTP webhook callbacks to your systems.
-
-- **Human URL:** [https://developer.invoiced.com/api/events](https://developer.invoiced.com/api/events)
-- **Base URL:** `https://api.invoiced.com`
-
-#### Tags
-
-- Events
-- Webhooks
-- Notifications
-
-#### Properties
-
-- [Documentation](https://developer.invoiced.com/api/events)
-- [API Reference](https://developer.invoiced.com/api/events)
-- [OpenAPI](openapi/invoiced-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/invoiced.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/invoiced.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/Invoiced)
-- [LinkedIn](https://www.linkedin.com/company/invoiced)
 - [Website](https://www.invoiced.com)
 - [Documentation](https://developer.invoiced.com/api)
-- [Plans](plans/invoiced-plans-pricing.yml)
-- [Rate Limits](rate-limits/invoiced-rate-limits.yml)
-- [Fin Ops](finops/invoiced-finops.yml)
+- [Blog](https://www.invoiced.com/feed)
+- [GitHub](https://github.com/Invoiced)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.0** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.5 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 5.3 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 10.7** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/invoiced/](https://apis.io/providers/invoiced/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Invoiced: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/invoiced/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
